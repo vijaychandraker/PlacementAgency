@@ -1,0 +1,148 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PlacementAgency.SiteMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Placement Agency Management</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+
+    <style>
+        /* THEME */
+        .navbar { background-color:#b2cbe5; }
+        .sidebar { background-color:#c6e2ff; min-height:100%; }
+        .sidebar .nav-link{ color:#003366; font-weight:500; }
+        .sidebar .nav-link:hover{ background:#b2d8ff; color:#000; border-radius:5px; }
+
+        /* LAYOUT — no fixed positioning anywhere */
+        main { background:#fff; }
+
+        /* Footer just sits under the grid */
+        footer{ background:#f8f9fa; }
+
+        /* Small devices: sidebar stacks on top automatically via grid */
+        @media (max-width: 767.98px){
+            .navbar .navbar-brand{ font-weight:600; }
+        }
+
+        /* Borderless toggle button (icon-only) */
+        #toggleSidebarBtn{
+            border:none!important; box-shadow:none!important; outline:none!important;
+            background:transparent!important; padding:.25rem .5rem;
+        }
+        #toggleSidebarBtn:hover{ background:rgba(0,0,0,.05); border-radius:.35rem; }
+    </style>
+</head>
+
+<body>
+<form runat="server">
+    <asp:ScriptManager runat="server" />
+
+    <!-- TOP NAVBAR -->
+    <nav class="navbar navbar-expand-sm navbar-light shadow-sm">
+        <div class="container-fluid">
+            <!-- Sidebar Toggle -->
+            <button type="button" id="toggleSidebarBtn" class="me-2">
+                <i class="bi bi-list" style="font-size:1.5rem;"></i>
+            </button>
+
+            <a class="navbar-brand text-dark" href="#">Placement Agency</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                    aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-dark" href="~/About">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="~/Contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger fw-semibold" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GRID LAYOUT (sidebar is NOT fixed; it scrolls with page) -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- SIDEBAR -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 sidebar py-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="~/Dashboard.aspx">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+
+                    
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/PayrollEntry.aspx">
+                            <i class="bi bi-cash-stack"></i> Payroll Entry
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Reports.aspx">
+                            <i class="bi bi-file-earmark-text"></i> Reports
+                        </a>
+                    </li>
+                      <li class="nav-item">
+      <a class="nav-link" href="~/Reports.aspx">
+          <i class="bi bi-file-earmark-text"></i> Add Query
+      </a>
+  </li>
+                      <li class="nav-item">
+      <a class="nav-link" href="~/Reports.aspx">
+          <i class="bi bi-file-earmark-text"></i> File Upload
+      </a>
+  </li>
+                </ul>
+            </nav>
+
+            <!-- MAIN CONTENT -->
+            <main id="mainContent" class="col-md-9 col-lg-10 px-md-4 py-4">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-3 border-top">
+        <p class="mb-0">&copy; <%: DateTime.Now.Year %> - Placement Agency Management System</p>
+    </footer>
+</form>
+
+<!-- Bootstrap JS bundle (from your bundle config) -->
+<asp:PlaceHolder runat="server">
+    <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+</asp:PlaceHolder>
+
+<!-- Sidebar hide/show (no fixed layout; we just toggle columns) -->
+<script>
+    (function () {
+        const btn = document.getElementById('toggleSidebarBtn');
+        const sidebar = document.getElementById('sidebarMenu');
+        const main = document.getElementById('mainContent');
+
+        btn.addEventListener('click', function () {
+            // hide/show sidebar
+            sidebar.classList.toggle('d-none');
+
+            // expand / shrink main column
+            main.classList.toggle('col-lg-10');
+            main.classList.toggle('col-lg-12');
+            main.classList.toggle('col-md-9');
+            main.classList.toggle('col-md-12');
+        });
+    })();
+</script>
+</body>
+</html>
