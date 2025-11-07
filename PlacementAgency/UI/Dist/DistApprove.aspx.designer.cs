@@ -11,62 +11,89 @@ namespace PlacementAgency.UI.Dist
 {
 
 
-    public partial class csmcl_DistEntry
+    public partial class DistApprove
     {
 
         /// <summary>
-        /// ddlFY control.
+        /// ddlFYDapprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFY;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFYDapprove;
 
         /// <summary>
-        /// ddlmonth control.
+        /// ddlmonthDApprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlmonth;
+        protected global::System.Web.UI.WebControls.DropDownList ddlmonthDApprove;
 
         /// <summary>
-        /// ddllocation control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddllocation;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// ddlcategory control.
+        /// lblmsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcategory;
+        protected global::System.Web.UI.WebControls.Label lblmsg;
 
         /// <summary>
-        /// ddlrtype control.
+        /// maincontApprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlrtype;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl maincontApprove;
 
         /// <summary>
-        /// duties control.
+        /// gveDuty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox duties;
+        protected global::System.Web.UI.WebControls.GridView gveDuty;
+
+        /// <summary>
+        /// btnApprove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnApprove;
+
+        /// <summary>
+        /// btnReject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReject;
+
+        /// <summary>
+        /// txtreasion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtreasion;
 
         /// <summary>
         /// btnSubmit control.
@@ -76,23 +103,5 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
-
-        /// <summary>
-        /// btnreset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnreset;
-
-        /// <summary>
-        /// btnshow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnshow;
     }
 }

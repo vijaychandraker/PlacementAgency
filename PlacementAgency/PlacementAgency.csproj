@@ -179,6 +179,8 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="UI\Dist\csmcl_DistEntry.aspx" />
+    <Content Include="UI\Dist\csmcl_EntryReport.aspx" />
+    <Content Include="UI\Dist\DistApprove.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -240,6 +242,20 @@
     </Compile>
     <Compile Include="UI\Dist\csmcl_DistEntry.aspx.designer.cs">
       <DependentUpon>csmcl_DistEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dist\csmcl_EntryReport.aspx.cs">
+      <DependentUpon>csmcl_EntryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Dist\csmcl_EntryReport.aspx.designer.cs">
+      <DependentUpon>csmcl_EntryReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dist\DistApprove.aspx.cs">
+      <DependentUpon>DistApprove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Dist\DistApprove.aspx.designer.cs">
+      <DependentUpon>DistApprove.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

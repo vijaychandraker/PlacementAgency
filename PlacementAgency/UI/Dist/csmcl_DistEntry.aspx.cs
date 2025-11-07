@@ -17,18 +17,20 @@ namespace PlacementAgency.UI.Dist
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            { 
                 Bindmonth();
             BindLocation();
             BindCategory();
             BindRateType();
             BindFY();
+            }
         }
 
         //month
         public void Bindmonth()
         {
-            DataTable dtCompany = db.ExecuteQuery("csmcl_sp_GetAllMonths", null);
-            ddlmonth.DataSource = dtCompany;
+            DataTable dtval = db.ExecuteQuery("csmcl_sp_GetAllMonths", null);
+            ddlmonth.DataSource = dtval;
             ddlmonth.DataTextField = "MonthName";
             ddlmonth.DataValueField = "MonthID";
             ddlmonth.DataBind();
@@ -37,8 +39,8 @@ namespace PlacementAgency.UI.Dist
         }
         public void BindLocation()
         {
-            DataTable dt = db.ExecuteQuery("csmcl_sp_GetAllLocations", null);
-            ddllocation.DataSource = dt;
+            DataTable dtlo = db.ExecuteQuery("csmcl_sp_GetAllLocations", null);
+            ddllocation.DataSource = dtlo;
             ddllocation.DataTextField = "LocationName";
             ddllocation.DataValueField = "LocationID";
             ddllocation.DataBind();
@@ -46,8 +48,8 @@ namespace PlacementAgency.UI.Dist
         }
         public void BindCategory()
         {
-            DataTable dt = db.ExecuteQuery("csmcl_sp_GetAllEmployeeCategories", null);
-            ddlcategory.DataSource = dt;
+            DataTable dtct = db.ExecuteQuery("csmcl_sp_GetAllEmployeeCategories", null);
+            ddlcategory.DataSource = dtct;
             ddlcategory.DataTextField = "CategoryName";
             ddlcategory.DataValueField = "CategoryID";
             ddlcategory.DataBind();
@@ -55,8 +57,8 @@ namespace PlacementAgency.UI.Dist
         }
         public void BindRateType()
         {
-            DataTable dt = db.ExecuteQuery("csmcl_sp_GetAllRateTypes", null);
-            ddlrtype.DataSource = dt;
+            DataTable dtrt = db.ExecuteQuery("csmcl_sp_GetAllRateTypes", null);
+            ddlrtype.DataSource = dtrt;
             ddlrtype.DataTextField = "RateTypeName";
             ddlrtype.DataValueField = "RtypeID";
             ddlrtype.DataBind();
@@ -106,24 +108,31 @@ namespace PlacementAgency.UI.Dist
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            SqlParameter[] parameters = {   
-                    new SqlParameter("@month", ddlmonth.SelectedValue),
-                    new SqlParameter("@location",ddllocation.SelectedValue),
-                    new SqlParameter("@category", ddlcategory.SelectedValue),
-                    new SqlParameter("@rtype", ddlrtype.SelectedValue),
-                    new SqlParameter("@duties", duties.Text.Trim()),
-                    new SqlParameter("@EntryID", GenerateRandomID()),
-                    new SqlParameter("@Zone_ID", "Z1"),
-                    new SqlParameter("@Agency_ID", "AG1"),
-                    new SqlParameter("@District_ID",101),
-                    new SqlParameter("@FY",ddlFY.SelectedValue),
-                    new SqlParameter("@EntryBy", "abc"),
-                     new SqlParameter("@UpdateDate", ""),
-                    new SqlParameter("@UpdateBy", "abc")
-                    };
-                db.ExecuteNonQuery("InsertInsurancePolicy", parameters);
-            int successdata = (int)parameters[parameters.Length - 1].Value;
-            if (successdata > 0)
+            if (string.IsNullOrEmpty(ddlcategory.SelectedValue) ||
+       string.IsNullOrEmpty(ddllocation.SelectedValue) ||
+       string.IsNullOrEmpty(ddlrtype.SelectedValue))
+            {
+                // show validation message here
+                return;
+            }
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@EntryID", GenerateRandomID()),
+        new SqlParameter("@Zone_ID", "Z1"),
+        new SqlParameter("@Agency_ID", "AG1"),
+        new SqlParameter("@District_ID", 101),
+        new SqlParameter("@CategoryID", ddlcategory.SelectedValue),
+        new SqlParameter("@LocationID", ddllocation.SelectedValue),
+        new SqlParameter("@RtypeID", ddlrtype.SelectedValue),
+        new SqlParameter("@NoOfDuties", duties.Text.Trim()),
+        new SqlParameter("@Month", ddlmonth.SelectedValue),
+        new SqlParameter("@FY", ddlFY.SelectedValue),
+        new SqlParameter("@ApproveByDishead", "0"),
+        new SqlParameter("@EntryBy", "abc")
+    };
+
+            int rows = db.ExecuteNonQuery("csmcl_sp_InsertDutyEntry", parameters);
+            if (rows > 0)
             {
                 
             }

@@ -59,6 +59,7 @@
                     <div class="col-sm-10 offset-sm-4 ">
                          <asp:Button ID="btnSubmit" CssClass="btn btn-success" runat="server" Text="Submit" OnClick="btnSubmit_Click"/>
                        <asp:Button ID="btnreset" CssClass="btn btn-success" runat="server" Text="Reset"/>
+                        <asp:Button ID="btnshow" CssClass="btn btn-success" runat="server" Text="Show Data"/>
                     </div>
                 </div>
             </div>
