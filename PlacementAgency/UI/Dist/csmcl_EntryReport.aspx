@@ -161,7 +161,10 @@
    <tr>
      
      
-       <td colspan="3"><button type="submit" class="btn btn-success">Update</button>&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning">Cancel</button></td>
+       <td colspan="3">
+           <asp:Button ID="btnupdate" runat="server" Text="Update" OnClick="btnupdate_Click" />&nbsp&nbsp&nbsp
+           <asp:Button ID="btncancel" runat="server" Text="Cancel" />
+        
    </tr>
    
   </tbody>

@@ -18,7 +18,7 @@ namespace PlacementAgency.UI.Dist
             if (!IsPostBack)
             {
                 BindGrid();
-                Bindmonth();
+               // Bindmonth();
                 BindFY();
 
             }
@@ -116,6 +116,10 @@ namespace PlacementAgency.UI.Dist
             }
         }
 
+        protected void ddlFYDapprove_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             {
@@ -140,6 +144,42 @@ namespace PlacementAgency.UI.Dist
                 }
             }
 
+        }
+
+        public void BindMonthByFY(string selectedFY)
+        {
+            ddlmonthDApprove.Items.Clear();
+
+            if (string.IsNullOrEmpty(selectedFY))
+            {
+                ddlmonthDApprove.Items.Insert(0, new ListItem("-- Select Month --", ""));
+                return;
+            }
+
+            // Extract years from FY like "2025-26"
+            int startYear = int.Parse(selectedFY.Substring(0, 4));
+            int endYear = startYear + 1;
+
+            // April–December of startYear
+            for (int m = 4; m <= 12; m++)
+            {
+                string monthName = new DateTime(startYear, m, 1).ToString("MMMM");
+                ddlmonthDApprove.Items.Add(new ListItem($"{monthName}", m.ToString()));
+            }
+
+            // January–March of nextYear
+            for (int m = 1; m <= 3; m++)
+            {
+                string monthName = new DateTime(endYear, m, 1).ToString("MMMM");
+                ddlmonthDApprove.Items.Add(new ListItem($"{monthName}", m.ToString()));
+            }
+
+            ddlmonthDApprove.Items.Insert(0, new ListItem("-- Select Month --", ""));
+        }
+
+        protected void ddlFYDapprove_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            BindMonthByFY(ddlFYDapprove.SelectedValue);
         }
     }
 }

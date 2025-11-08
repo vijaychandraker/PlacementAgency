@@ -6,7 +6,7 @@
     <div class="col-md-4 d-flex align-items-center">
         <label for="ddlFYDapprove" class="col-sm-4 col-form-label text-sm-end mb-0">FY:&nbsp&nbsp&nbsp</label>
         <div class="col-sm-8">
-            <asp:DropDownList ID="ddlFYDapprove" runat="server" class="form-select"></asp:DropDownList>
+            <asp:DropDownList ID="ddlFYDapprove" runat="server" OnSelectedIndexChanged="ddlFYDapprove_SelectedIndexChanged1" AutoPostBack="true"  class="form-select"></asp:DropDownList>
         </div>
     </div>
 

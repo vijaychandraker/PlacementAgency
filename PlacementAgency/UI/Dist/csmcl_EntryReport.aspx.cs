@@ -52,7 +52,7 @@ namespace PlacementAgency.UI.Dist
         new SqlParameter("@District_ID", 101),   // replace with session or logged-in district
         new SqlParameter("@FY", ddlFYreport.SelectedValue),
         new SqlParameter("@Month", ddlmonthreport.SelectedValue),
-        new SqlParameter("@ApproveByDishead", "0")
+        new SqlParameter("@ApproveByDishead", "4")
             };
 
             DataTable dt = db.ExecuteQuery("csmcl_GetDutyEntries", param);
@@ -118,8 +118,6 @@ namespace PlacementAgency.UI.Dist
                 lblrejectMSG.Visible = false;
             }
         }
-
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             if (ddlFYreport.SelectedIndex > 0 && ddlmonthreport.SelectedIndex > 0)
@@ -136,5 +134,62 @@ namespace PlacementAgency.UI.Dist
             }
            
         }
+
+        protected void btnupdate_Click(object sender, EventArgs e)
+        {
+            UpdateReportData();
+
+        }
+        private void UpdateReportData()
+        {
+            string updatedBy = Session["UserName"] != null ? Session["UserName"].ToString() : "System";
+
+            // Define ID mappings
+            var dutiesList = new List<(TextBox TextBox, string CategoryID, string LocationID, string RtypeID)>
+    {
+        (txtMCLOffic, "EC1", "L1", "RT1"),
+        (txtMCLShop, "EC1", "L2", "RT1"),
+        (txtMSoffice, "EC2", "L1", "RT1"),
+        (txtMSShop, "EC2", "L2", "RT1"),
+        (txtMMOffice, "EC3", "L1", "RT1"),
+        (txtMMShop, "EC3", "L2", "RT1"),
+
+        (txtOTCLShop, "EC1", "L2", "RT2"),
+        (txtOTSShop, "EC2", "L2", "RT2"),
+        (txtOTMShop, "EC3", "L2", "RT2"),
+
+        (txtDCSOffice, "EC1", "L1", "RT3"),
+        (txtDCSShop, "EC1", "L2", "RT3"),
+        (txtDSOffice, "EC2", "L1", "RT3"),
+        (txtDSShop, "EC2", "L2", "RT3"),
+        (txtDMOffice, "EC3", "L1", "RT3"),
+        (txtDMShop, "EC3", "L2", "RT3")
+    };
+
+            foreach (var item in dutiesList)
+            {
+                if (!string.IsNullOrWhiteSpace(item.TextBox.Text))
+                {
+                    SqlParameter[] parameters = new SqlParameter[]
+                    {
+                new SqlParameter("@District_ID", 101),
+                new SqlParameter("@FY", ddlFYreport.SelectedValue),
+                new SqlParameter("@Month", ddlmonthreport.SelectedValue),
+                new SqlParameter("@CategoryID", item.CategoryID),
+                new SqlParameter("@LocationID", item.LocationID),
+                new SqlParameter("@RtypeID", item.RtypeID),
+                new SqlParameter("@NoOfDuties", item.TextBox.Text),
+                new SqlParameter("@ApproveByDishead", "0"),
+                new SqlParameter("@UpdateBy", updatedBy)
+                    };
+
+                    db.ExecuteNonQuery("csmcl_UpdateDutyEntries", parameters);
+                }
+            }
+
+            lblmsg.Visible = true;
+            lblmsg.Text = "Records updated successfully.";
+        }
+
     }
 }
