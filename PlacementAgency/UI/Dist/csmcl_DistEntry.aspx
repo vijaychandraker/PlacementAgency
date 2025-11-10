@@ -11,11 +11,9 @@
  <div class="row mb-3">
      <label for="month" class="col-sm-4 col-form-label text-sm-end">FY:</label>
      <div class="col-sm-6">
-         <asp:DropDownList ID="ddlFY" runat="server" class="form-select"></asp:DropDownList>    
+         <asp:DropDownList ID="ddlFY" runat="server" class="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlFY_SelectedIndexChanged"></asp:DropDownList>    
      </div>
  </div>
-
-
 
                 <!-- Month -->
                 <div class="row mb-3">

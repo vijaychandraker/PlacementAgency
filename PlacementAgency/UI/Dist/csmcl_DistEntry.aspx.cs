@@ -17,12 +17,12 @@ namespace PlacementAgency.UI.Dist
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            { 
-                Bindmonth();
-            BindLocation();
-            BindCategory();
-            BindRateType();
-            BindFY();
+            {
+                // Bindmonth();
+                BindLocation();
+                BindCategory();
+                BindRateType();
+                BindFY();
             }
         }
 
@@ -81,10 +81,11 @@ namespace PlacementAgency.UI.Dist
 
             // Add default item at top
             ddlFY.Items.Insert(0, new ListItem("-- Select Financial Year --", ""));
+            ddlmonth.Items.Insert(0, new ListItem("-- Select Month --", ""));
 
             // Optional: auto-select current FY
-            string currentFY = $"{currentYear}-{(currentYear + 1).ToString().Substring(2)}";
-            ddlFY.SelectedValue = currentFY;
+            // string currentFY = $"{currentYear}-{(currentYear + 1).ToString().Substring(2)}";
+            // ddlFY.SelectedValue = currentFY;
         }
 
         public string GenerateRandomID()
@@ -134,13 +135,48 @@ namespace PlacementAgency.UI.Dist
             int rows = db.ExecuteNonQuery("csmcl_sp_InsertDutyEntry", parameters);
             if (rows > 0)
             {
-                
+
             }
             else
             {
-                
+
             }
 
         }
+
+        public void BindMonthByFY(string selectedFY)
+        {
+            ddlmonth.Items.Clear();
+
+            if (string.IsNullOrEmpty(selectedFY))
+            {
+                ddlmonth.Items.Insert(0, new ListItem("-- Select Month --", ""));
+                return;
+            }
+            // Extract years from FY like "2025-26"
+            int startYear = int.Parse(selectedFY.Substring(0, 4));
+            int endYear = startYear + 1;
+
+            // April–December of startYear
+            for (int m = 4; m <= 12; m++)
+            {
+                string monthName = new DateTime(startYear, m, 1).ToString("MMMM");
+                ddlmonth.Items.Add(new ListItem($"{monthName}", m.ToString()));
+            }
+
+            // January–March of nextYear
+            for (int m = 1; m <= 3; m++)
+            {
+                string monthName = new DateTime(endYear, m, 1).ToString("MMMM");
+                ddlmonth.Items.Add(new ListItem($"{monthName}", m.ToString()));
+            }
+
+          //  ddlmonth.Items.Insert(0, new ListItem("-- Select Month --", ""));
+        }
+
+        protected void ddlFY_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindMonthByFY(ddlFY.SelectedValue);
+        }
     }
-}
+    }

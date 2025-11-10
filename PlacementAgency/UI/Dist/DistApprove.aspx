@@ -36,6 +36,7 @@
         <asp:BoundField DataField="CategoryName" HeaderText="Category" />
         <asp:BoundField DataField="LocationName" HeaderText="Location" />
         <asp:BoundField DataField="RateTypeName" HeaderText="Rate Type" />
+        <asp:BoundField DataField="HeadCount" HeaderText="Head Count" />
         <asp:BoundField DataField="NoOfDuties" HeaderText="Duties" />
      
     </Columns>
