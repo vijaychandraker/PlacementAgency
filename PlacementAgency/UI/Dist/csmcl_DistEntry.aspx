@@ -43,12 +43,25 @@
                       <asp:DropDownList ID="ddlrtype" runat="server" class="form-select"></asp:DropDownList> 
                     </div>
                 </div>
+                 <!-- HeadCount -->
+ <div class="row mb-3">
+     <label for="duties" class="col-sm-4 col-form-label text-sm-end">Total Head Count:</label>
+     <div class="col-sm-6">
+
+         <asp:TextBox ID="txtheadcount" runat="server" class="form-control" TextMode="Number"></asp:TextBox>
+       
+     </div>
+ </div>
+
+
+
+
                 <!-- Duties -->
                 <div class="row mb-3">
                     <label for="duties" class="col-sm-4 col-form-label text-sm-end">Number of Duties:</label>
                     <div class="col-sm-6">
 
-                        <asp:TextBox ID="duties" runat="server" class="form-control"></asp:TextBox>
+                        <asp:TextBox ID="duties" runat="server" class="form-control" TextMode="Number"></asp:TextBox>
                       
                     </div>
                 </div>

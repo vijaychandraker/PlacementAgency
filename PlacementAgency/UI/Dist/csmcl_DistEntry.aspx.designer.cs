@@ -60,6 +60,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.DropDownList ddlrtype;
 
         /// <summary>
+        /// txtheadcount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtheadcount;
+
+        /// <summary>
         /// duties control.
         /// </summary>
         /// <remarks>

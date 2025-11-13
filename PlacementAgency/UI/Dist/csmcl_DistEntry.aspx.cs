@@ -125,6 +125,7 @@ namespace PlacementAgency.UI.Dist
         new SqlParameter("@CategoryID", ddlcategory.SelectedValue),
         new SqlParameter("@LocationID", ddllocation.SelectedValue),
         new SqlParameter("@RtypeID", ddlrtype.SelectedValue),
+        new SqlParameter("@HCount", txtheadcount.Text.Trim()),
         new SqlParameter("@NoOfDuties", duties.Text.Trim()),
         new SqlParameter("@Month", ddlmonth.SelectedValue),
         new SqlParameter("@FY", ddlFY.SelectedValue),

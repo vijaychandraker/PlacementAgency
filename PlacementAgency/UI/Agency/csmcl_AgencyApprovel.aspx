@@ -61,7 +61,9 @@
     </Columns>
 </asp:GridView>
 
-
+<asp:Button ID="btnapproveAgent" runat="server" Text="Approve & Upload Document" />&nbsp&nbsp&nbsp
+      <asp:Button ID="btnReject" runat="server" Text="Reject" />&nbsp&nbsp&nbsp
+<asp:Button ID="btncancel" runat="server" Text="Cancel" />
 
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
