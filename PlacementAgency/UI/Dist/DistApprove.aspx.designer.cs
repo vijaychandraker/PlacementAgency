@@ -15,31 +15,22 @@ namespace PlacementAgency.UI.Dist
     {
 
         /// <summary>
-        /// ddlFYDapprove control.
+        /// ddlFYdis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFYDapprove;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFYdis;
 
         /// <summary>
-        /// ddlmonthDApprove control.
+        /// ddlMonthdis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlmonthDApprove;
-
-        /// <summary>
-        /// btnSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMonthdis;
 
         /// <summary>
         /// lblmsg control.
@@ -51,22 +42,679 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.Label lblmsg;
 
         /// <summary>
-        /// maincontApprove control.
+        /// lbl_CS_Off_Mdis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl maincontApprove;
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_Mdis;
 
         /// <summary>
-        /// gveDuty control.
+        /// lbl_CS_Off_M_HCdis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gveDuty;
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_M_HCdis;
+
+        /// <summary>
+        /// lbl_CS_Off_M_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_M_Dutdis;
+
+        /// <summary>
+        /// lbl_CS_Off_M_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_M_Totaldis;
+
+        /// <summary>
+        /// lbl_CS_Sh_Mdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_Mdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_M_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_M_HCdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_M_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_M_Dutdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_M_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_M_Totaldis;
+
+        /// <summary>
+        /// lbl_S_Off_Mdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_Mdis;
+
+        /// <summary>
+        /// lbl_S_Off_M_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_M_HCdis;
+
+        /// <summary>
+        /// lbl_S_Off_M_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_M_Dutdis;
+
+        /// <summary>
+        /// lbl_S_Off_M_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_M_Totaldis;
+
+        /// <summary>
+        /// lbl_S_Sh_Mdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_Mdis;
+
+        /// <summary>
+        /// lbl_S_Sh_M_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_M_HCdis;
+
+        /// <summary>
+        /// lbl_S_Sh_M_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_M_Dutdis;
+
+        /// <summary>
+        /// lbl_S_Sh_M_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_M_Totaldis;
+
+        /// <summary>
+        /// lbl_M_Off_Mdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_Mdis;
+
+        /// <summary>
+        /// lbl_M_Off_M_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_M_HCdis;
+
+        /// <summary>
+        /// lbl_M_Off_M_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_M_Dutdis;
+
+        /// <summary>
+        /// lbl_M_Off_M_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_M_Totaldis;
+
+        /// <summary>
+        /// lbl_M_Sh_Mdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_Mdis;
+
+        /// <summary>
+        /// lbl_M_Sh_M_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_M_HCdis;
+
+        /// <summary>
+        /// lbl_M_Sh_M_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_M_Dutdis;
+
+        /// <summary>
+        /// lbl_M_Sh_M_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_M_Totaldis;
+
+        /// <summary>
+        /// lblTotalAdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalAdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_OTdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_OTdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_OT_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_OT_HCdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_OT_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_OT_Dutdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_OT_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_OT_Totaldis;
+
+        /// <summary>
+        /// lbl_S_Sh_OTdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_OTdis;
+
+        /// <summary>
+        /// lbl_S_Sh_OT_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_OT_HCdis;
+
+        /// <summary>
+        /// lbl_S_Sh_OT_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_OT_Dutdis;
+
+        /// <summary>
+        /// lbl_S_Sh_OT_Dut_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_OT_Dut_Totaldis;
+
+        /// <summary>
+        /// lbl_M_Sh_OTdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_OTdis;
+
+        /// <summary>
+        /// lbl_M_Sh_OT_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_OT_HCdis;
+
+        /// <summary>
+        /// lbl_M_Sh_OT_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_OT_Dutdis;
+
+        /// <summary>
+        /// lbl_M_Sh_OT_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_OT_Totaldis;
+
+        /// <summary>
+        /// lblTotalBdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalBdis;
+
+        /// <summary>
+        /// lbl_CS_Off_Ddis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_Ddis;
+
+        /// <summary>
+        /// lbl_CS_Off_D_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_D_HCdis;
+
+        /// <summary>
+        /// lbl_CS_Off_D_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_D_Dutdis;
+
+        /// <summary>
+        /// lbl_CS_Off_D_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Off_D_Totaldis;
+
+        /// <summary>
+        /// lbl_CS_Sh_Ddis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_Ddis;
+
+        /// <summary>
+        /// lbl_CS_Sh_D_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_D_HCdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_D_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_D_Dutdis;
+
+        /// <summary>
+        /// lbl_CS_Sh_D_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_CS_Sh_D_Totaldis;
+
+        /// <summary>
+        /// lbl_S_Off_Ddis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_Ddis;
+
+        /// <summary>
+        /// lbl_S_Off_D_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_D_HCdis;
+
+        /// <summary>
+        /// lbl_S_Off_D_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_D_Dutdis;
+
+        /// <summary>
+        /// lbl_S_Off_D_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Off_D_Totaldis;
+
+        /// <summary>
+        /// lbl_S_Sh_Ddis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_Ddis;
+
+        /// <summary>
+        /// lbl_S_Sh_D_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_D_HCdis;
+
+        /// <summary>
+        /// lbl_S_Sh_D_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_D_Dutdis;
+
+        /// <summary>
+        /// lbl_S_Sh_D_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_S_Sh_D_Totaldis;
+
+        /// <summary>
+        /// lbl_M_Off_Ddis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_Ddis;
+
+        /// <summary>
+        /// lbl_M_Off_D_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_D_HCdis;
+
+        /// <summary>
+        /// lbl_M_Off_D_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_D_Dutdis;
+
+        /// <summary>
+        /// lbl_M_Off_D_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Off_D_Totaldis;
+
+        /// <summary>
+        /// lbl_M_Sh_Ddis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_Ddis;
+
+        /// <summary>
+        /// lbl_M_Sh_D_HCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_D_HCdis;
+
+        /// <summary>
+        /// lbl_M_Sh_D_Dutdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_D_Dutdis;
+
+        /// <summary>
+        /// lbl_M_Sh_D_Totaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_M_Sh_D_Totaldis;
+
+        /// <summary>
+        /// lblTotalCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalCdis;
+
+        /// <summary>
+        /// lblTotalD_AplusBplusCdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalD_AplusBplusCdis;
+
+        /// <summary>
+        /// lblESICdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblESICdis;
+
+        /// <summary>
+        /// lblEPFdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEPFdis;
+
+        /// <summary>
+        /// lblAgencyChargesdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAgencyChargesdis;
+
+        /// <summary>
+        /// lblTotalEdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalEdis;
+
+        /// <summary>
+        /// lblCGSTdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCGSTdis;
+
+        /// <summary>
+        /// lblSGSTdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSGSTdis;
+
+        /// <summary>
+        /// lblGrandTotaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGrandTotaldis;
+
+        /// <summary>
+        /// lblTDSdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTDSdis;
+
+        /// <summary>
+        /// lblLessCGSTdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLessCGSTdis;
+
+        /// <summary>
+        /// lblLessSGSTdis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLessSGSTdis;
+
+        /// <summary>
+        /// lblRoundedTotaldis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRoundedTotaldis;
 
         /// <summary>
         /// btnApprove control.

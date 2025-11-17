@@ -29,7 +29,9 @@
 
     <asp:Label ID="lblmsg" runat="server" ForeColor="Red" Visible="false"></asp:Label>
     <asp:Label ID="lblrejectMSG" runat="server" ForeColor="Red" Visible="false"></asp:Label>
-
+    <div class="alert alert-warning" role="alert">
+  Approvel Pending From District Office
+</div>
     <div id="maincont" runat="server" visible="false" class="container text-center">
 
 

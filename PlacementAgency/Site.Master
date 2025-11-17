@@ -87,9 +87,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarMain">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link text-dark" href="~/About">About</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="~/Contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link text-danger fw-semibold" href="#">Logout</a></li>
+                        <li class="nav-item"> <a style="font-weight:700">UserName:- </a>
+                            <asp:Label ID="lblusername" runat="server"></asp:Label> &nbsp</li>
+                        <li class="nav-item"><a style="font-weight:700"> UserRole:-</a>
+                            <asp:Label ID="lbluserrole" runat="server"></asp:Label> &nbsp</li>
+                        <li class="nav-item"><a style="font-weight:700"> District:- </a>
+                            <asp:Label ID="lbldistrict" runat="server"></asp:Label></li>
                     </ul>
                 </div>
             </div>
@@ -101,31 +104,31 @@
                 <!-- SIDEBAR -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 sidebar py-3">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="~/Dashboard.aspx">
-                                <i class="bi bi-speedometer2"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/PayrollEntry.aspx">
-                                <i class="bi bi-cash-stack"></i>Payroll Entry
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Reports.aspx">
-                                <i class="bi bi-file-earmark-text"></i>Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Reports.aspx">
-                                <i class="bi bi-file-earmark-text"></i>Add Query
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Reports.aspx">
-                                <i class="bi bi-file-earmark-text"></i>File Upload
-                            </a>
-                        </li>
+                        
+                      <li id="Li2" runat="server" class="nav-item">
+        <a href="<%= ResolveUrl("~/UI/Dashboard/Dashboard.aspx") %>"  class="nav-link">
+            <p>Dashboard</p>
+        </a>
+    </li>
+                        
+                        <li id="Li3" runat="server" class="nav-item">
+                                <a href="<%= ResolveUrl("~/UI/Dist/csmcl_DistEntry.aspx") %>"  class="nav-link">
+                                    <p>Payroll Entry</p>
+                                </a>
+                            </li>
+
+                        <li id="lnkUser" runat="server" class="nav-item">
+                                <a href="<%= ResolveUrl("~/UI/Dist/csmclDistApproveStatus.aspx") %>"  class="nav-link">
+                                    <p>Approve Status</p>
+                                </a>
+                            </li>
+                       <li id="Li1" runat="server" class="nav-item">
+        <a href="<%= ResolveUrl("~/UI/Dist/csmcl_EntryReport.aspx") %>"  class="nav-link">
+            <p>Report</p>
+        </a>
+    </li>
+                       
+                       
                     </ul>
                 </nav>
 
