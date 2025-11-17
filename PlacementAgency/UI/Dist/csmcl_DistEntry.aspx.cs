@@ -25,7 +25,6 @@ namespace PlacementAgency.UI.Dist
                 BindFY();
             }
         }
-
         //month
         public void Bindmonth()
         {

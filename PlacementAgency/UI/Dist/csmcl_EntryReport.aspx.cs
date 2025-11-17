@@ -52,7 +52,7 @@ namespace PlacementAgency.UI.Dist
         new SqlParameter("@District_ID", 101),   // replace with session or logged-in district
         new SqlParameter("@FY", ddlFYreport.SelectedValue),
         new SqlParameter("@Month", ddlmonthreport.SelectedValue),
-        new SqlParameter("@ApproveByDishead", "4")
+        new SqlParameter("@ApproveByDishead", "0")
             };
 
             DataTable dt = db.ExecuteQuery("csmcl_GetDutyEntries", param);
@@ -77,37 +77,83 @@ namespace PlacementAgency.UI.Dist
                     string location = dr["LocationName"].ToString();
                     string rtype = dr["RateTypeName"].ToString();
                     string duties = dr["NoOfDuties"].ToString();
+                    string headcount = dr["HCount"].ToString();
 
                     if (category == "CHIEF SALESMAN" && location == "Office" && rtype == "Month")
+                    {
                         txtMCLOffic.Text = duties;
+                        txtMCLOffic_HC.Text = headcount;
+                    }
                     else if (category == "CHIEF SALESMAN" && location == "Shop" && rtype == "Month")
+                    {
                         txtMCLShop.Text = duties;
+                        txtMCLShop_HC.Text = headcount;
+                    }
                     else if (category == "SALESMAN" && location == "Office" && rtype == "Month")
+                    {
                         txtMSoffice.Text = duties;
+                        txtMSoffice_HC.Text = headcount;
+                    }
                     else if (category == "SALESMAN" && location == "Shop" && rtype == "Month")
+                    {
                         txtMSShop.Text = duties;
+                        txtMSShop_HC.Text = headcount;
+                    }
                     else if (category == "MULTIPURPOSE" && location == "Office" && rtype == "Month")
+                    {
                         txtMMOffice.Text = duties;
+                        txtMMOffice_HC.Text = headcount;
+                    }
                     else if (category == "MULTIPURPOSE" && location == "Shop" && rtype == "Month")
+                    {
                         txtMMShop.Text = duties;
+                        txtMMShop_HC.Text = headcount;
+                    }
                     else if (category == "CHIEF SALESMAN" && location == "Shop" && rtype == "OT")
+                    {
                         txtOTCLShop.Text = duties;
+                        txtOTCLShop_HC.Text = headcount;
+                    }
                     else if (category == "SALESMAN" && location == "Shop" && rtype == "OT")
+                    {
                         txtOTSShop.Text = duties;
+                        txtOTSShop_HC.Text = headcount;
+                    }
                     else if (category == "MULTIPURPOSE" && location == "Shop" && rtype == "OT")
+                    {
                         txtOTMShop.Text = duties;
+                        txtOTMShop_HC.Text = headcount;
+                    }
                     else if (category == "CHIEF SALESMAN" && location == "Office" && rtype == "Day")
+                    {
                         txtDCSOffice.Text = duties;
+                        txtDCSOffice_HC.Text = headcount;
+                    }
                     else if (category == "CHIEF SALESMAN" && location == "Shop" && rtype == "Day")
+                    {
                         txtDCSShop.Text = duties;
+                        txtDCSShop_HC.Text = headcount;
+                    }
                     else if (category == "SALESMAN" && location == "Office" && rtype == "Day")
+                    {
                         txtDSOffice.Text = duties;
+                        txtDSOffice_HC.Text = headcount;
+                    }
                     else if (category == "SALESMAN" && location == "Shop" && rtype == "Day")
+                    {
                         txtDSShop.Text = duties;
+                        txtDSShop_HC.Text = headcount;
+                    }
                     else if (category == "MULTIPURPOSE" && location == "Office" && rtype == "Day")
+                    {
                         txtDMOffice.Text = duties;
+                        txtDMOffice_HC.Text = headcount;
+                    }
                     else if (category == "MULTIPURPOSE" && location == "Shop" && rtype == "Day")
+                    {
                         txtDMShop.Text = duties;
+                        txtDMShop_HC.Text = headcount;
+                    }
                 }
             }
             else
@@ -145,30 +191,30 @@ namespace PlacementAgency.UI.Dist
             string updatedBy = Session["UserName"] != null ? Session["UserName"].ToString() : "System";
 
             // Define ID mappings
-            var dutiesList = new List<(TextBox TextBox, string CategoryID, string LocationID, string RtypeID)>
+            var dutiesList = new List<(TextBox TextBox, TextBox TextBox2, string CategoryID, string LocationID, string RtypeID)>
     {
-        (txtMCLOffic, "EC1", "L1", "RT1"),
-        (txtMCLShop, "EC1", "L2", "RT1"),
-        (txtMSoffice, "EC2", "L1", "RT1"),
-        (txtMSShop, "EC2", "L2", "RT1"),
-        (txtMMOffice, "EC3", "L1", "RT1"),
-        (txtMMShop, "EC3", "L2", "RT1"),
+        (txtMCLOffic_HC,txtMCLOffic, "EC1", "L1", "RT1"),
+        (txtMCLShop_HC, txtMCLShop, "EC1", "L2", "RT1"),
+        (txtMSoffice_HC,txtMSoffice, "EC2", "L1", "RT1"),
+        (txtMSShop_HC,txtMSShop, "EC2", "L2", "RT1"),
+        (txtMMOffice_HC,txtMMOffice, "EC3", "L1", "RT1"),
+        (txtMMShop_HC,txtMMShop, "EC3", "L2", "RT1"),
 
-        (txtOTCLShop, "EC1", "L2", "RT2"),
-        (txtOTSShop, "EC2", "L2", "RT2"),
-        (txtOTMShop, "EC3", "L2", "RT2"),
+        (txtOTCLShop_HC,txtOTCLShop, "EC1", "L2", "RT2"),
+        (txtOTSShop_HC,txtOTSShop, "EC2", "L2", "RT2"),
+        (txtOTMShop_HC,txtOTMShop, "EC3", "L2", "RT2"),
 
-        (txtDCSOffice, "EC1", "L1", "RT3"),
-        (txtDCSShop, "EC1", "L2", "RT3"),
-        (txtDSOffice, "EC2", "L1", "RT3"),
-        (txtDSShop, "EC2", "L2", "RT3"),
-        (txtDMOffice, "EC3", "L1", "RT3"),
-        (txtDMShop, "EC3", "L2", "RT3")
+        (txtDCSOffice_HC,txtDCSOffice, "EC1", "L1", "RT3"),
+        (txtDCSShop_HC,txtDCSShop, "EC1", "L2", "RT3"),
+        (txtDSOffice_HC,txtDSOffice, "EC2", "L1", "RT3"),
+        (txtDSShop_HC,txtDSShop, "EC2", "L2", "RT3"),
+        (txtDMOffice_HC,txtDMOffice, "EC3", "L1", "RT3"),
+        (txtDMShop_HC, txtDMShop, "EC3", "L2", "RT3")
     };
 
             foreach (var item in dutiesList)
             {
-                if (!string.IsNullOrWhiteSpace(item.TextBox.Text))
+                if (!string.IsNullOrWhiteSpace(item.TextBox.Text)|| !string.IsNullOrWhiteSpace(item.TextBox2.Text))
                 {
                     SqlParameter[] parameters = new SqlParameter[]
                     {
@@ -178,8 +224,9 @@ namespace PlacementAgency.UI.Dist
                 new SqlParameter("@CategoryID", item.CategoryID),
                 new SqlParameter("@LocationID", item.LocationID),
                 new SqlParameter("@RtypeID", item.RtypeID),
-                new SqlParameter("@NoOfDuties", item.TextBox.Text),
-                new SqlParameter("@ApproveByDishead", "0"),
+                new SqlParameter("@NoOfDuties", item.TextBox2.Text),
+                new SqlParameter("@HCount", item.TextBox.Text),
+           //     new SqlParameter("@ApproveByDishead", "0"),
                 new SqlParameter("@UpdateBy", updatedBy)
                     };
 

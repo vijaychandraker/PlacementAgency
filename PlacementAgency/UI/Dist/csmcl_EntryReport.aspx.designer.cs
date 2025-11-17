@@ -69,6 +69,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl maincont;
 
         /// <summary>
+        /// txtMCLOffic_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMCLOffic_HC;
+
+        /// <summary>
         /// txtMCLOffic control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMCLOffic;
+
+        /// <summary>
+        /// txtMCLShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMCLShop_HC;
 
         /// <summary>
         /// txtMCLShop control.
@@ -87,6 +105,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtMCLShop;
 
         /// <summary>
+        /// txtMSoffice_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMSoffice_HC;
+
+        /// <summary>
         /// txtMSoffice control.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMSoffice;
+
+        /// <summary>
+        /// txtMSShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMSShop_HC;
 
         /// <summary>
         /// txtMSShop control.
@@ -105,6 +141,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtMSShop;
 
         /// <summary>
+        /// txtMMOffice_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMMOffice_HC;
+
+        /// <summary>
         /// txtMMOffice control.
         /// </summary>
         /// <remarks>
@@ -112,6 +157,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMMOffice;
+
+        /// <summary>
+        /// txtMMShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMMShop_HC;
 
         /// <summary>
         /// txtMMShop control.
@@ -123,6 +177,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtMMShop;
 
         /// <summary>
+        /// txtOTCLShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOTCLShop_HC;
+
+        /// <summary>
         /// txtOTCLShop control.
         /// </summary>
         /// <remarks>
@@ -130,6 +193,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOTCLShop;
+
+        /// <summary>
+        /// txtOTSShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOTSShop_HC;
 
         /// <summary>
         /// txtOTSShop control.
@@ -141,6 +213,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtOTSShop;
 
         /// <summary>
+        /// txtOTMShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOTMShop_HC;
+
+        /// <summary>
         /// txtOTMShop control.
         /// </summary>
         /// <remarks>
@@ -148,6 +229,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOTMShop;
+
+        /// <summary>
+        /// txtDCSOffice_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDCSOffice_HC;
 
         /// <summary>
         /// txtDCSOffice control.
@@ -159,6 +249,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtDCSOffice;
 
         /// <summary>
+        /// txtDCSShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDCSShop_HC;
+
+        /// <summary>
         /// txtDCSShop control.
         /// </summary>
         /// <remarks>
@@ -166,6 +265,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDCSShop;
+
+        /// <summary>
+        /// txtDSOffice_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDSOffice_HC;
 
         /// <summary>
         /// txtDSOffice control.
@@ -177,6 +285,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtDSOffice;
 
         /// <summary>
+        /// txtDSShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDSShop_HC;
+
+        /// <summary>
         /// txtDSShop control.
         /// </summary>
         /// <remarks>
@@ -186,6 +303,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtDSShop;
 
         /// <summary>
+        /// txtDMOffice_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDMOffice_HC;
+
+        /// <summary>
         /// txtDMOffice control.
         /// </summary>
         /// <remarks>
@@ -193,6 +319,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDMOffice;
+
+        /// <summary>
+        /// txtDMShop_HC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDMShop_HC;
 
         /// <summary>
         /// txtDMShop control.

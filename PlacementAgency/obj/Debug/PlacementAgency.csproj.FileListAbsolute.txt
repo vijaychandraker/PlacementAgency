@@ -1,3 +1,5 @@
+C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\obj\Debug\PlacementAgency.csproj.AssemblyReference.cache
+C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\obj\Debug\PlacementAgency.csproj.CoreCompileInputs.cache
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\bin\PlacementAgency.dll.config
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\bin\PlacementAgency.dll
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\bin\PlacementAgency.pdb
@@ -65,8 +67,6 @@ C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\bin\Newtonsoft.Json.x
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\bin\Antlr3.Runtime.pdb
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\obj\Debug\PlacementAgency.csproj.AssemblyReference.cache
-C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\obj\Debug\PlacementAgency.csproj.CoreCompileInputs.cache
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\obj\Debug\Placemen.61931E43.Up2Date
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\obj\Debug\PlacementAgency.dll
 C:\Users\Acer\source\repos\PlacementAgency\PlacementAgency\obj\Debug\PlacementAgency.pdb

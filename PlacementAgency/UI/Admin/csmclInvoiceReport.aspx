@@ -222,5 +222,7 @@
 
 
     </div>
-
+    <div>
+    <asp:Button ID="btnPrint" runat="server" Text="Print" />
+        </div>
 </asp:Content>
