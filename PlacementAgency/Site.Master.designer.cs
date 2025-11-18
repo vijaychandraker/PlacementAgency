@@ -42,40 +42,58 @@ namespace PlacementAgency
         protected global::System.Web.UI.WebControls.Label lbldistrict;
 
         /// <summary>
-        /// Li2 control.
+        /// lidashboard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lidashboard;
 
         /// <summary>
-        /// Li3 control.
+        /// lidistapprovepayroll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lidistapprovepayroll;
 
         /// <summary>
-        /// lnkUser control.
+        /// liagencyapprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkUser;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liagencyapprove;
 
         /// <summary>
-        /// Li1 control.
+        /// lipayrolentry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lipayrolentry;
+
+        /// <summary>
+        /// liapproveststus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liapproveststus;
+
+        /// <summary>
+        /// lireport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lireport;
 
         /// <summary>
         /// MainContent control.

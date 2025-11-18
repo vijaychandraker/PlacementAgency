@@ -59,6 +59,7 @@ namespace PlacementAgency.UI.Dist
 
             if (dt.Rows.Count > 0)
             {
+                desabletxt();
                 lblmsg.Visible = false;
                 maincont.Visible = true;
                 object note = dt.Rows[0]["RejectByDishead_Note"];
@@ -236,6 +237,42 @@ namespace PlacementAgency.UI.Dist
 
             lblmsg.Visible = true;
             lblmsg.Text = "Records updated successfully.";
+        }
+
+        public void desabletxt()
+        {
+
+                txtMCLOffic.Enabled = false;
+                txtMCLOffic_HC.Enabled = false;
+                txtMCLShop.Enabled = false;
+                txtMCLShop_HC.Enabled = false;
+                txtMSoffice.Enabled = false;
+                txtMSoffice_HC.Enabled = false;
+                txtMSShop.Enabled = false;
+                txtMSShop_HC.Enabled = false;
+                txtMMOffice.Enabled = false;
+                txtMMOffice_HC.Enabled = false;
+                txtMMShop.Enabled = false;
+                txtMMShop_HC.Enabled = false;
+                txtOTCLShop.Enabled = false;
+                txtOTCLShop_HC.Enabled = false;
+                txtOTSShop.Enabled = false;
+                txtOTSShop_HC.Enabled = false;
+                txtOTMShop.Enabled = false;
+                txtOTMShop_HC.Enabled = false;
+                txtDCSOffice.Enabled = false;
+                txtDCSOffice_HC.Enabled = false;
+                txtDCSShop.Enabled = false;
+                txtDCSShop_HC.Enabled = false;
+                txtDSOffice.Enabled = false;
+                txtDSOffice_HC.Enabled = false;
+                txtDSShop.Enabled = false;
+                txtDSShop_HC.Enabled = false;
+                txtDMOffice.Enabled = false;
+                txtDMOffice_HC.Enabled = false;
+                txtDMShop.Enabled = false;
+                txtDMShop_HC.Enabled = false;
+          
         }
 
     }

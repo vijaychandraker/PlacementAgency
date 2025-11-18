@@ -105,24 +105,34 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 sidebar py-3">
                     <ul class="nav flex-column">
                         
-                      <li id="Li2" runat="server" class="nav-item">
+                      <li id="lidashboard" runat="server" class="nav-item">
         <a href="<%= ResolveUrl("~/UI/Dashboard/Dashboard.aspx") %>"  class="nav-link">
             <p>Dashboard</p>
         </a>
     </li>
+                         <li id="lidistapprovepayroll" runat="server" class="nav-item">
+         <a href="<%= ResolveUrl("~/UI/Dist/DistApprove.aspx") %>"  class="nav-link">
+             <p>Approve Payroll</p>
+         </a>
+     </li>
+                                            <li id="liagencyapprove" runat="server" class="nav-item">
+    <a href="<%= ResolveUrl("~/UI/Agency/csmcl_AgencyApprovel.aspx") %>"  class="nav-link">
+        <p>Approve Payroll</p>
+    </a>
+</li>
                         
-                        <li id="Li3" runat="server" class="nav-item">
+                        <li id="lipayrolentry" runat="server" class="nav-item">
                                 <a href="<%= ResolveUrl("~/UI/Dist/csmcl_DistEntry.aspx") %>"  class="nav-link">
                                     <p>Payroll Entry</p>
                                 </a>
                             </li>
 
-                        <li id="lnkUser" runat="server" class="nav-item">
+                        <li id="liapproveststus" runat="server" class="nav-item">
                                 <a href="<%= ResolveUrl("~/UI/Dist/csmclDistApproveStatus.aspx") %>"  class="nav-link">
                                     <p>Approve Status</p>
                                 </a>
                             </li>
-                       <li id="Li1" runat="server" class="nav-item">
+                       <li id="lireport" runat="server" class="nav-item">
         <a href="<%= ResolveUrl("~/UI/Dist/csmcl_EntryReport.aspx") %>"  class="nav-link">
             <p>Report</p>
         </a>

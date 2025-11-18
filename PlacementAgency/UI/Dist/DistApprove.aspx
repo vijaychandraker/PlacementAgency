@@ -14,15 +14,18 @@
                 <label for="month" class="col-sm-4 col-form-label text-sm-end">Month:</label>
                 <asp:DropDownList ID="ddlMonthdis" runat="server" class="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged"></asp:DropDownList>
             </div>
+             
+
+
         </div>
     </div>
 
 
     <asp:Label ID="lblmsg" runat="server" Text="Label" Visible="false"></asp:Label>
     <br />
-    <div class="container text-center">
+    <div runat="server" id="maincont" visible="false" class="container text-center">
 
-<div class="alert alert-danger d-flex align-items-center" role="alert">
+<div runat="server" id="divmsg" visible="false" class="alert alert-danger d-flex align-items-center" role="alert">
     <div>
   LESS : TDS on (E) / 
    LESS : CGST  on  (E) / 
@@ -231,7 +234,7 @@
         </table>
 
 
-    </div>
+    
    <div class="col-sm-10 offset-sm-4 ">
            <asp:Button ID="btnApprove" CssClass="btn btn-success" runat="server" Text="Approve" OnClick="btnApprove_Click" />
 <asp:Button ID="btnReject" CssClass="btn btn-danger" runat="server" Text="Reject" OnClick="btnReject_Click" /><br /> <br />
@@ -239,4 +242,5 @@
                 <asp:TextBox ID="txtreasion" runat="server" TextMode="MultiLine"  Visible="false"></asp:TextBox>
               <asp:Button ID="btnSubmit" CssClass="btn btn-success" runat="server"  Visible="false" Text="Submit" OnClick="btnSubmit_Click" />
               </div>
+        </div>
 </asp:Content>

@@ -42,6 +42,24 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.Label lblmsg;
 
         /// <summary>
+        /// maincont control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl maincont;
+
+        /// <summary>
+        /// divmsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divmsg;
+
+        /// <summary>
         /// lbl_CS_Off_Mdis control.
         /// </summary>
         /// <remarks>

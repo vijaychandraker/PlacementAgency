@@ -3,138 +3,259 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
+    <div class="container text-center">
+        <div class="row g-3">
 
-    
-                    <div class="row mb-3">
+    <!-- District -->
+    <div class="col-md-3">
+        <label for="ddldistrictAgent" class="form-label">District</label>
+        <asp:DropDownList ID="ddldistrictAgent" runat="server" CssClass="form-select"></asp:DropDownList>
+    </div>
+
     <!-- FY -->
-    <div class="col-md-3 d-flex align-items-center">
-        <label for="ddlFYDapproveAgent" class="col-sm-4 col-form-label text-sm-end mb-0">FY:&nbsp&nbsp&nbsp</label>
-        <div class="col-sm-8">
-            <asp:DropDownList ID="ddlFYDapproveAgent" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="ddlFYDapprove_SelectedIndexChanged"  class="form-select"></asp:DropDownList>
-        </div>
+    <div class="col-md-3">
+        <label for="ddlFYAg" class="form-label">FY</label>
+        <asp:DropDownList ID="ddlFYAg" runat="server" AutoPostBack="true"
+            OnSelectedIndexChanged="ddlFY_SelectedIndexChanged" CssClass="form-select"></asp:DropDownList>
     </div>
 
     <!-- Month -->
-    <div class="col-md-3 d-flex align-items-center">
-        <label for="ddlmonthDApproveAgent" class="col-sm-4 col-form-label text-sm-end mb-0">Month:&nbsp&nbsp&nbsp</label>
-        <div class="col-sm-8">
-            <asp:DropDownList ID="ddlmonthDApproveAgent" runat="server" class="form-select"></asp:DropDownList>
+    <div class="col-md-3">
+        <label for="ddlMonthAg" class="form-label">Month</label>
+        <asp:DropDownList ID="ddlMonthAg" runat="server" CssClass="form-select"></asp:DropDownList>
+    </div>
+
+    <!-- Button -->
+    <div class="col-md-3 d-flex align-items-end">
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary w-100" OnClick="btnSubmit_Click1" />
+    </div>
+
+</div>
+
+    </div>
+
+
+    <asp:Label ID="lblmsg" runat="server" Text="Label" Visible="false"></asp:Label>
+    <br />
+    <div runat="server" id="maincont" visible="false" class="container text-center">
+
+<div runat="server" id="divmsg" visible="false" class="alert alert-danger d-flex align-items-center" role="alert">
+    <div>
+  LESS : TDS on (E) / 
+   LESS : CGST  on  (E) / 
+   LESS : SGST  on (E) / 
+        All are LESS when State Admin Apprive.
+  </div>
+</div>
+
+
+        <table class="table table-bordered">
+            <tr class="alert alert-warning fw-bold">
+                <td>PARTICULARS</td>
+                <td>Rate / Pay Per Month</td>
+                <td>Head Count</td>
+                <td>Duties</td>
+                <td>Amount(Rs)</td>
+            </tr>
+            <tr>
+                <td>CHIEF SALESMAN(Office)</td>
+                <td>
+                    <asp:Label ID="lbl_CS_Off_MAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Off_M_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Off_M_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Off_M_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>CHIEF SALESMAN (Shop)</td>
+                <td><asp:Label ID="lbl_CS_Sh_MAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Sh_M_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Sh_M_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Sh_M_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>SALESMAN (Office)</td>
+                 <td><asp:Label ID="lbl_S_Off_MAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Off_M_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Off_M_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Off_M_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>SALESMAN (Shop)</td>
+               <td><asp:Label ID="lbl_S_Sh_MAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Sh_M_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Sh_M_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Sh_M_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>MULTIPURPOSE (Office)</td>
+                 <td><asp:Label ID="lbl_M_Off_MAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Off_M_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Off_M_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Off_M_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>MULTIPURPOSE (Shop)</td>
+                  <td><asp:Label ID="lbl_M_Sh_MAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Sh_M_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Sh_M_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Sh_M_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr class="alert alert-secondary fw-bold">
+                <td colspan="4" >TOTAL (A)</td>
+                <td><asp:Label ID="lblTotalAAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr class="alert alert-warning fw-bold">
+                <td>PARTICULARS</td>
+                <td>OT Rate/ Hr.</td>
+                <td>Head Count</td>
+                <td>Total OT Hrs.</td>
+                <td>Amount(Rs)</td>
+            </tr>
+            <tr>
+                <td>CHIEF SALESMAN (Shop)</td>
+                <td><asp:Label ID="lbl_CS_Sh_OTAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Sh_OT_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Sh_OT_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_CS_Sh_OT_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>SALESMAN (Shop)</td>
+                <td><asp:Label ID="lbl_S_Sh_OTAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Sh_OT_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_S_Sh_OT_DutAg" runat="server"/></td>
+                <td><asp:Label ID="lbl_S_Sh_OT_Dut_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>MULTIPURPOSE (Shop)</td>
+                <td><asp:Label ID="lbl_M_Sh_OTAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Sh_OT_HCAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Sh_OT_DutAg" runat="server"></asp:Label></td>
+                <td><asp:Label ID="lbl_M_Sh_OT_TotalAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr class="alert alert-secondary fw-bold">
+                <td colspan="4">TOTAL (B)</td>
+                <td><asp:Label ID="lblTotalBAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr class="alert alert-warning fw-bold">
+                <td>PARTICULARS</td>
+                <td>Per day Rate</td>
+                <td>Head Count</td>
+                <td>Total Week off 4 Days</td>
+                <td>Amount(Rs)</td>
+            </tr>
+           
+           <tr>
+     <td>CHIEF SALESMAN (Office)</td>
+     <td>
+         <asp:Label ID="lbl_CS_Off_DAg" runat="server"></asp:Label>
+
+     </td>
+     <td><asp:Label ID="lbl_CS_Off_D_HCAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_CS_Off_D_DutAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_CS_Off_D_TotalAg" runat="server"></asp:Label></td>
+ </tr>
+ <tr>
+     <td>CHIEF SALESMAN (Shop)</td>
+     <td><asp:Label ID="lbl_CS_Sh_DAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_CS_Sh_D_HCAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_CS_Sh_D_DutAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_CS_Sh_D_TotalAg" runat="server"></asp:Label></td>
+ </tr>
+ <tr>
+     <td>SALESMAN (Office)</td>
+      <td><asp:Label ID="lbl_S_Off_DAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_S_Off_D_HCAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_S_Off_D_DutAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_S_Off_D_TotalAg" runat="server"></asp:Label></td>
+ </tr>
+ <tr>
+     <td>SALESMAN (Shop)</td>
+    <td><asp:Label ID="lbl_S_Sh_DAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_S_Sh_D_HCAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_S_Sh_D_DutAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_S_Sh_D_TotalAg" runat="server"></asp:Label></td>
+ </tr>
+ <tr>
+     <td>MULTIPURPOSE (Office)</td>
+      <td><asp:Label ID="lbl_M_Off_DAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_M_Off_D_HCAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_M_Off_D_DutAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_M_Off_D_TotalAg" runat="server"></asp:Label></td>
+ </tr>
+ <tr>
+     <td>MULTIPURPOSE (Shop)</td>
+       <td><asp:Label ID="lbl_M_Sh_DAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_M_Sh_D_HCAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_M_Sh_D_DutAg" runat="server"></asp:Label></td>
+     <td><asp:Label ID="lbl_M_Sh_D_TotalAg" runat="server"></asp:Label></td>
+ </tr>  
+
+
+
+            <tr class="alert alert-secondary fw-bold">
+                <td colspan="4">TOTAL (C)</td>
+                <td><asp:Label ID="lblTotalCAg" runat="server"></asp:Label></td>
+            </tr>
+            <tr class="alert alert-secondary fw-bold">
+                <td colspan="4" >TOTAL - D (A)+(B)+(C)</td>
+                <td><asp:Label ID="lblTotalD_AplusBplusCAg" runat="server"></asp:Label></td>
+            </tr>
+             <tr>
+     <td colspan="3">ESIC (D )</td>
+     <td>3.25%</td> <td> <asp:Label ID="lblESICAg" runat="server"></asp:Label></td>
+ </tr>
+                        <tr>
+    <td colspan="3">Rs. 15000/- EPF ON Rs. 3217113/-</td>
+    <td>13%</td> <td> <asp:Label ID="lblEPFAg" runat="server"></asp:Label></td>
+</tr>
+                                    <tr>
+    <td colspan="3">AGENCY CHARGES  (C )</td>
+    <td>9%</td> <td>  <asp:Label ID="lblAgencyChargesAg" runat="server"></asp:Label></td>
+</tr>
+             <tr class="alert alert-secondary fw-bold">
+     <td colspan="4">TOTAL (E) (D+ ESI+EPF+AGENCY CHARGES)</td>
+     <td> <asp:Label ID="lblTotalEAg" runat="server"></asp:Label></td>
+ </tr>
+                                    <tr>
+    <td colspan="3">ADD: CGST (E)</td>
+    <td>9%</td> <td>  <asp:Label ID="lblCGSTAg" runat="server"></asp:Label></td>
+</tr>
+                                    <tr>
+    <td colspan="3">ADD: SGST (E)</td>
+    <td>9%</td> <td> <asp:Label ID="lblSGSTAg" runat="server"></asp:Label></td>
+</tr>
+             <tr class="alert alert-secondary fw-bold">
+     <td colspan="4">GRAND TOTAL - F (D+GST)</td>
+     <td>  <asp:Label ID="lblGrandTotalAg" runat="server"></asp:Label></td>
+ </tr>
+                                                <tr>
+    <td colspan="3">LESS : TDS on (E) </td>
+    <td>Pending by State</td> <td> <asp:Label ID="lblTDSAg" runat="server"></asp:Label></td>
+</tr>
+                                                            <tr>
+    <td colspan="3">LESS : CGST  on  (E) </td>
+    <td>Pending by State</td> <td>  <asp:Label ID="lblLessCGSTAg" runat="server"></asp:Label></td>
+</tr>
+                                    <tr>
+    <td colspan="3">LESS : SGST  on (E) </td>
+    <td>Pending by Sate</td> <td> <asp:Label ID="lblLessSGSTAg" runat="server"></asp:Label></td>
+</tr>
+             <tr class="alert alert-secondary fw-bold">
+     <td colspan="4">GRAND TOTAL - (Rounded off)</td>
+     <td>   <asp:Label ID="lblRoundedTotalAg" runat="server"></asp:Label></td>
+ </tr>
+
+        </table>
+
+
+    
+   <div class="col-sm-10 offset-sm-4 ">
+           <asp:Button ID="btnApproveAg" CssClass="btn btn-success" runat="server" Text="Approve" OnClick="btnApprove_Click" />
+<asp:Button ID="btnReject" CssClass="btn btn-danger" runat="server" Text="Reject" OnClick="btnReject_Click" /><br /> <br />
+
+                <asp:TextBox ID="txtreasionAg" runat="server" TextMode="MultiLine"  Visible="false"></asp:TextBox>
+              <asp:Button ID="btnSubmitAg" CssClass="btn btn-success" runat="server"  Visible="false" Text="Submit" OnClick="btnSubmit_Click" />
+              </div>
         </div>
-    </div>
-                        <!-- Dist -->
-<div class="col-md-3 d-flex align-items-center">
-    <label for="ddlmonthDApproveAgent" class="col-sm-4 col-form-label text-sm-end mb-0">District:&nbsp&nbsp&nbsp</label>
-    <div class="col-sm-8">
-        <asp:DropDownList ID="ddldistrictAgent" runat="server" class="form-select"></asp:DropDownList>
-    </div>
-</div>
-                     <div class="col-md-3 d-flex align-items-center">
-     <div class="col-sm-8">
-         <asp:Button ID="btnSearchAgent" runat="server" CssClass="btn btn-success" Text="Submit" OnClick="btnSearchAgent_Click" />
-     </div>
- </div>
-</div>
-
-
-    <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Duties</button>
-    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Document Upload</button>
-   
-    
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-
-          <asp:GridView ID="gveDutyAgent" runat="server" 
-    AutoGenerateColumns="false"
-    CssClass="table table-bordered table-striped table-hover text-center mt-4">
-
-    <Columns>
-        <asp:BoundField DataField="CategoryName" HeaderText="Category" />
-        <asp:BoundField DataField="LocationName" HeaderText="Location" />
-        <asp:BoundField DataField="RateTypeName" HeaderText="Rate Type" />
-        <asp:BoundField DataField="HeadCount" HeaderText="Head Count" />
-        <asp:BoundField DataField="NoOfDuties" HeaderText="Duties" />
-     
-    </Columns>
-</asp:GridView>
-
-<asp:Button ID="btnapproveAgent" runat="server" Text="Approve & Upload Document" />&nbsp&nbsp&nbsp
-      <asp:Button ID="btnReject" runat="server" Text="Reject" />&nbsp&nbsp&nbsp
-<asp:Button ID="btncancel" runat="server" Text="Cancel" />
-
-  </div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-
-         
- 
-  
-    <div class="container text-center">
-  <div class="row align-items-start">
-    <div class="col">
-        1. EPF
-    </div>
-    <div class="col">
-        <asp:FileUpload ID="fuepf" runat="server" />
-    </div>
-  </div>
-        <div class="row align-items-start">
-  <div class="col">
-      1. ECR
-  </div>
-  <div class="col">
-      <asp:FileUpload ID="FileUpload1" runat="server" />
-  </div>
-</div>
-        <div class="row align-items-start">
-  <div class="col">
-      2. GST
-  </div>
-  <div class="col">
-      <asp:FileUpload ID="FileUpload2" runat="server" />
-  </div>
-</div>
-        <div class="row align-items-start">
-  <div class="col">
-      3. Name of Employees
-  </div>
-  <div class="col">
-      <asp:FileUpload ID="FileUpload3" runat="server" />
-  </div>
-</div>
-        <div class="row align-items-start">
-  <div class="col">
-      4. Employees Salary Payment Certificate
-  </div>
-  <div class="col">
-      <asp:FileUpload ID="FileUpload4" runat="server" />
-  </div>
-</div>
-        <div class="row align-items-start">
-  <div class="col">
-      5. EPF
-  </div>
-  <div class="col">
-      <asp:FileUpload ID="FileUpload5" runat="server" />
-  </div>
-</div>
-</div>
-  
-  </div>
-
-</div>
-
-
-
-
-         
-
-
-
-
-    
-
-
 </asp:Content>
+

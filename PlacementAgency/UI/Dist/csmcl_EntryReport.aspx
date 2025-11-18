@@ -149,8 +149,8 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <asp:Button ID="btnupdate" runat="server" Text="Update" OnClick="btnupdate_Click" />&nbsp&nbsp&nbsp
-           <asp:Button ID="btncancel" runat="server" Text="Cancel" />
+                        <asp:Button ID="btnupdate" runat="server" Text="Update" Visible="false" OnClick="btnupdate_Click" />&nbsp&nbsp&nbsp
+           <asp:Button ID="btncancel" runat="server" Visible="false" Text="Cancel" />
                 </tr>
 
             </tbody>

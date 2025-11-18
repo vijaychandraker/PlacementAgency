@@ -81,6 +81,9 @@ namespace PlacementAgency.UI.Dist
         }
         public void BindDutyRateData()
         {
+
+            maincont.Visible = true;
+            divmsg.Visible = true;
             SqlParameter[] param = new SqlParameter[]
             {
         new SqlParameter("@Month", ddlMonthdis.SelectedValue),
@@ -346,12 +349,18 @@ namespace PlacementAgency.UI.Dist
                 decimal rounded = grandF - (tds + lessCgst + lessSgst);
                 if (lblRoundedTotaldis != null) lblRoundedTotaldis.Text = "Pending";
             }
+            else
+            {
+                maincont.Visible = false;
+                divmsg.Visible = false;
+            }
         }
 
 
         protected void ddlMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindDutyRateData();
+
         }
 
         protected void btnApprove_Click(object sender, EventArgs e)
@@ -408,5 +417,7 @@ namespace PlacementAgency.UI.Dist
                 }
             }
         }
+
+        
     }
 }
