@@ -183,8 +183,11 @@
     <Content Include="Site.Master" />
     <Content Include="UI\Admin\csmclInvoiceReport.aspx" />
     <Content Include="UI\Admin\csmcl_AdminDashboard.aspx" />
+    <Content Include="UI\Admin\master.aspx" />
     <Content Include="UI\Agency\csmcl_AgencyApprovel.aspx" />
+    <Content Include="UI\Agency\UploadDocument.aspx" />
     <Content Include="UI\Dashboard\Dashboard.aspx" />
+    <Content Include="UI\Dist\ApproveDocument.aspx" />
     <Content Include="UI\Dist\csmclDistApproveStatus.aspx" />
     <Content Include="UI\Dist\csmcl_DistEntry.aspx" />
     <Content Include="UI\Dist\csmcl_EntryReport.aspx" />
@@ -276,6 +279,13 @@
     <Compile Include="UI\Admin\csmcl_AdminDashboard.aspx.designer.cs">
       <DependentUpon>csmcl_AdminDashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Admin\master.aspx.cs">
+      <DependentUpon>master.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\master.aspx.designer.cs">
+      <DependentUpon>master.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Agency\csmcl_AgencyApprovel.aspx.cs">
       <DependentUpon>csmcl_AgencyApprovel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,12 +293,26 @@
     <Compile Include="UI\Agency\csmcl_AgencyApprovel.aspx.designer.cs">
       <DependentUpon>csmcl_AgencyApprovel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Agency\UploadDocument.aspx.cs">
+      <DependentUpon>UploadDocument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Agency\UploadDocument.aspx.designer.cs">
+      <DependentUpon>UploadDocument.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dashboard\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\Dashboard\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dist\ApproveDocument.aspx.cs">
+      <DependentUpon>ApproveDocument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Dist\ApproveDocument.aspx.designer.cs">
+      <DependentUpon>ApproveDocument.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Dist\csmclDistApproveStatus.aspx.cs">
       <DependentUpon>csmclDistApproveStatus.aspx</DependentUpon>

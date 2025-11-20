@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-using System.Web.UI;
 
 namespace PlacementAgency.Login
 {
@@ -19,7 +18,6 @@ namespace PlacementAgency.Login
                 // imgCaptcha.ImageUrl = ResolveUrl("~/helpers/Captcha.ashx?t=" + DateTime.UtcNow.Ticks);
             }
         }
-
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
             // 1. Check captcha
@@ -194,12 +192,10 @@ namespace PlacementAgency.Login
             Response.Redirect("~/UI/Dashboard/Dashboard.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
-
         private bool IsValidEmail(string input)
         {
             return Regex.IsMatch(input ?? string.Empty, @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase);
         }
-
         private void ShowMessage(string message)
         {
             // Use a safe client script that escapes single quotes
