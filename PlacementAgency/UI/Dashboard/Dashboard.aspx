@@ -130,24 +130,30 @@
                         <thead class="table-light">
                             <tr>
                                 <th>#</th>
+                                <th>District Name</th>
+                                <th>Dist Opt</th>
                                 <th>District</th>
-                                <th>District Approved</th>
-                                <th>Agency Approved</th>
-                                <th>State Approved</th>
+                                <th>Agency</th>
+                                <th>District</th>
+                                <th>State</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>Raipur</td>
+                                <td><span class="badge bg-success">Sumitted</span></td>
                                  <td><span class="badge bg-success">Approve</span></td>
+                                <td><span class="badge bg-success">Approve</span></td>
                                 <td><span class="badge bg-success">Approve</span></td>
                                  <td><span class="badge bg-warning text-dark">Pending</span></td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Balodabazar-Bhatapara</td>
+                                <td><span class="badge bg-warning">Not Submitted</span></td>
                                 <td><span class="badge bg-success">Approve</span></td>
+                                <td><span class="badge bg-warning text-dark">Pending</span></td>
                                 <td><span class="badge bg-warning text-dark">Pending</span></td>
                                   <td><span class="badge bg-warning text-dark">Pending</span></td>
                             </tr>

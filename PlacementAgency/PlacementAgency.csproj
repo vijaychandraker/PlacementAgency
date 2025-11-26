@@ -186,6 +186,7 @@
     <Content Include="UI\Admin\master.aspx" />
     <Content Include="UI\Agency\csmcl_AgencyApprovel.aspx" />
     <Content Include="UI\Agency\UploadDocument.aspx" />
+    <Content Include="UI\Dashboard\csmcl_Filetrack.aspx" />
     <Content Include="UI\Dashboard\Dashboard.aspx" />
     <Content Include="UI\Dist\ApproveDocument.aspx" />
     <Content Include="UI\Dist\csmclDistApproveStatus.aspx" />
@@ -299,6 +300,13 @@
     </Compile>
     <Compile Include="UI\Agency\UploadDocument.aspx.designer.cs">
       <DependentUpon>UploadDocument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dashboard\csmcl_Filetrack.aspx.cs">
+      <DependentUpon>csmcl_Filetrack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Dashboard\csmcl_Filetrack.aspx.designer.cs">
+      <DependentUpon>csmcl_Filetrack.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Dashboard\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

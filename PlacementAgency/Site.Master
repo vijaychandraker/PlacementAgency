@@ -137,7 +137,11 @@
             <p>Report</p>
         </a>
     </li>
-                       
+                                   <li id="li1" runat="server" class="nav-item">
+    <a href="<%= ResolveUrl("~/UI/Dashboard/csmcl_Filetrack.aspx") %>"  class="nav-link">
+        <p>File Tracking</p>
+    </a>
+</li>       
                        
                     </ul>
                 </nav>

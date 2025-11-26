@@ -1,26 +1,52 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ApproveDocument.aspx.cs" Inherits="PlacementAgency.UI.Dist.ApproveDocument" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="container text-center">
+
+    <div class="card">
+  <div class="card-header alert alert-success">
+    Search Record
+  </div>
+  <div class="card-body">
+            <div class="container text-center">
     <div class="row g-3">
+
         <!-- FY -->
-        <div class="col-md-3">
-            <label for="ddlFYAg" class="form-label">FY</label>
-            <asp:DropDownList ID="ddlFYAg" runat="server" AutoPostBack="true"
-                CssClass="form-select">
-            </asp:DropDownList>
-        </div>
-        <!-- Month -->
-        <div class="col-md-3">
-            <label for="ddlMonthAg" class="form-label">Month</label>
-            <asp:DropDownList ID="ddlMonthAg" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlMonthAg_SelectedIndexChanged"></asp:DropDownList>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text">
+                    <i class="bi bi-calendar-range"></i>&nbsp; FY
+                </label>
+                <asp:DropDownList ID="ddlFYAg" runat="server" AutoPostBack="true" CssClass="form-select"></asp:DropDownList>
+            </div>
         </div>
 
-        <!-- Button -->
-        <div class="col-md-3 d-flex align-items-end">
-            <asp:Button ID="Button1" runat="server" Text="Submit" CssClass="btn btn-primary w-100"/>
+        <!-- Month -->
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text">
+                    <i class="bi bi-calendar3"></i>&nbsp; Month
+                </label>
+                <asp:DropDownList ID="ddlMonthAg" runat="server" AutoPostBack="true"
+                    OnSelectedIndexChanged="ddlMonthAg_SelectedIndexChanged"
+                    CssClass="form-select"></asp:DropDownList>
+            </div>
         </div>
+
+        <!-- Buttons -->
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-success me-2" />
+            <asp:Button ID="btnClear" runat="server" Text="Clear" class="btn btn-info" />
+        </div>
+
     </div>
 </div>
+  </div>
+</div>
+
+
+
+
+
+       
     <br />
     <br />
         <div class="card">

@@ -1,33 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="csmcl_AgencyApprovel.aspx.cs" Inherits="PlacementAgency.UI.Agency.csmcl_AgencyApprovel" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    
+          <div class="card">
+<div class="card-header alert alert-success">
+  Search Record
+</div>
+<div class="card-body">
     <div class="container text-center">
-        <div class="row g-3">
-            <!-- District -->
-            <div class="col-md-3">
-                <label for="ddldistrictAgent" class="form-label">District</label>
+    <div class="row g-3">
+
+        <!-- District -->
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i>&nbsp; District</span>
                 <asp:DropDownList ID="ddldistrictAgent" runat="server" CssClass="form-select"></asp:DropDownList>
             </div>
+        </div>
 
-            <!-- FY -->
-            <div class="col-md-3">
-                <label for="ddlFYAg" class="form-label">FY</label>
-                <asp:DropDownList ID="ddlFYAg" runat="server" AutoPostBack="true"
-                    OnSelectedIndexChanged="ddlFY_SelectedIndexChanged" CssClass="form-select">
-                </asp:DropDownList>
-            </div>
-            <!-- Month -->
-            <div class="col-md-3">
-                <label for="ddlMonthAg" class="form-label">Month</label>
-                <asp:DropDownList ID="ddlMonthAg" runat="server" CssClass="form-select"></asp:DropDownList>
-            </div>
-
-            <!-- Button -->
-            <div class="col-md-3 d-flex align-items-end">
-                <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary w-100" OnClick="btnSubmit_Click1" />
+        <!-- FY -->
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-calendar-range"></i>&nbsp; FY</span>
+                <asp:DropDownList ID="ddlFYAg" runat="server" CssClass="form-select" AutoPostBack="true"
+                    OnSelectedIndexChanged="ddlFY_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
+
+        <!-- Month -->
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-calendar3"></i>&nbsp; Month</span>
+                <asp:DropDownList ID="ddlMonthAg" runat="server" CssClass="form-select"></asp:DropDownList>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-md-3 d-flex align-items-end">
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="btnSubmit_Click1" />&nbsp
+            <asp:Button ID="btnclr" runat="server" Text="Submit" CssClass="btn btn-warning" />
+        </div>
+
     </div>
+        </div>
+    </div>
+              </div>
+
     <asp:Label ID="lblmsg" runat="server" Text="Label" Visible="false"></asp:Label>
     <br />
     <div runat="server" id="maincont" visible="false" class="container text-center">

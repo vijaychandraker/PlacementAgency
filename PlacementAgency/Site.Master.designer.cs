@@ -96,6 +96,15 @@ namespace PlacementAgency
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lireport;
 
         /// <summary>
+        /// li1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li1;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

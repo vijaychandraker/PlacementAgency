@@ -2,37 +2,58 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+        <div class="card">
+  <div class="card-header alert alert-success">
+    Search Record
+  </div>
+  <div class="card-body">
+            <div class="container text-center">
+    <div class="row g-3">
 
-    <div class="row mb-3">
         <!-- FY -->
-        <div class="col-md-4 d-flex align-items-center">
-            <label for="ddlFY" class="col-sm-4 col-form-label text-sm-end mb-0">FY:&nbsp&nbsp&nbsp</label>
-            <div class="col-sm-8">
-                <asp:DropDownList ID="ddlFYreport" runat="server" class="form-select"></asp:DropDownList>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text">
+                    <i class="bi bi-calendar-range"></i>&nbsp; FY
+                </label>
+                <asp:DropDownList ID="ddlFYreport" runat="server"  class="form-select"></asp:DropDownList>
             </div>
         </div>
 
         <!-- Month -->
-        <div class="col-md-4 d-flex align-items-center">
-            <label for="ddlmonth" class="col-sm-4 col-form-label text-sm-end mb-0">Month:&nbsp&nbsp&nbsp</label>
-            <div class="col-sm-8">
-                <asp:DropDownList ID="ddlmonthreport" runat="server" class="form-select"></asp:DropDownList>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text">
+                    <i class="bi bi-calendar3"></i>&nbsp; Month
+                </label>
+               <asp:DropDownList ID="ddlmonthreport" runat="server" class="form-select"></asp:DropDownList>
             </div>
         </div>
-        <div class="col-md-4 d-flex align-items-center">
-            <div class="col-sm-8">
-                <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-success" Text="Submit" OnClick="btnSearch_Click" />
-            </div>
+
+        <!-- Buttons -->
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <asp:Button ID="btnSearch" runat="server" Text="Submit" class="btn btn-success" OnClick="btnSearch_Click" />&nbsp;
+            <asp:Button ID="btnClear" runat="server" Text="Clear" class="btn btn-warning" />
         </div>
+
     </div>
+</div>
+  </div>
+</div>  
     <br />
 
     <asp:Label ID="lblmsg" runat="server" ForeColor="Red" Visible="false"></asp:Label>
-    <asp:Label ID="lblrejectMSG" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+<asp:Label ID="lblrejectMSG" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+          <div class="card" id="maincont" runat="server" visible="false" >
+<div class="card-header alert alert-success">
+  Search Record
+</div>
+<div class="card-body">
+    
     <div class="alert alert-warning" role="alert">
   Approvel Pending From District Office
 </div>
-    <div id="maincont" runat="server" visible="false" class="container text-center">
+    <div class="container text-center">
 
 
         <table class="table table-bordered">
@@ -156,6 +177,9 @@
             </tbody>
         </table>
     </div>
+    </div>
+              </div>
+    
 </asp:Content>
 
 

@@ -2,37 +2,56 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    
+    <div class="card">
+  <div class="card-header alert alert-success">
+    Search Record
+  </div>
+  <div class="card-body">
+            <div class="container text-center">
+    <div class="row g-3">
 
-    <div class="container text-center">
-        <div class="row">
-           
-            <div class="col">
-                <label for="fy" class="col-sm-4 col-form-label text-sm-end">FY:</label>
+        <!-- FY -->
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text">
+                    <i class="bi bi-calendar-range"></i>&nbsp; FY
+                </label>
                 <asp:DropDownList ID="ddlFYdis" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlFY_SelectedIndexChanged" class="form-select"></asp:DropDownList>
             </div>
-            <div class="col">
-                <label for="month" class="col-sm-4 col-form-label text-sm-end">Month:</label>
-                <asp:DropDownList ID="ddlMonthdis" runat="server" class="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged"></asp:DropDownList>
-            </div>
-             
-
-
         </div>
+
+        <!-- Month -->
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text">
+                    <i class="bi bi-calendar3"></i>&nbsp; Month
+                </label>
+               <asp:DropDownList ID="ddlMonthdis" runat="server" class="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged"></asp:DropDownList>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <%--<div class="col-md-4 d-flex justify-content-center align-items-center">
+            <asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-success me-2" />
+            <asp:Button ID="btnClear" runat="server" Text="Clear" class="btn btn-info" />
+        </div>--%>
+
     </div>
-
-
-    <asp:Label ID="lblmsg" runat="server" Text="Label" Visible="false"></asp:Label>
-    <br />
-    <div runat="server" id="maincont" visible="false" class="container text-center">
-
-<div runat="server" id="divmsg" visible="false" class="alert alert-danger d-flex align-items-center" role="alert">
-    <div>
-  LESS : TDS on (E) / 
-   LESS : CGST  on  (E) / 
-   LESS : SGST  on (E) / 
-        All are LESS when State Admin Apprive.
+</div>
   </div>
 </div>
+
+    <br />
+
+      <div class="card" runat="server" id="maincont" visible="false">
+<div class="card-header alert alert-info">
+Approve
+</div>
+<div class="card-body" >
+    <asp:Label ID="lblmsg" runat="server" Text="Label" Visible="false"></asp:Label>
+    <br />
+    <div  class="container text-center">
 
 
         <table class="table table-bordered">
@@ -216,15 +235,15 @@
  </tr>
                                                 <tr>
     <td colspan="3">LESS : TDS on (E) </td>
-    <td>Pending by State</td> <td> <asp:Label ID="lblTDSdis" runat="server"></asp:Label></td>
+    <td>0.10%</td> <td> <asp:Label ID="lblTDSdis" runat="server"></asp:Label></td>
 </tr>
                                                             <tr>
     <td colspan="3">LESS : CGST  on  (E) </td>
-    <td>Pending by State</td> <td>  <asp:Label ID="lblLessCGSTdis" runat="server"></asp:Label></td>
+    <td>1%</td> <td>  <asp:Label ID="lblLessCGSTdis" runat="server"></asp:Label></td>
 </tr>
                                     <tr>
     <td colspan="3">LESS : SGST  on (E) </td>
-    <td>Pending by Sate</td> <td> <asp:Label ID="lblLessSGSTdis" runat="server"></asp:Label></td>
+    <td>1%</td> <td> <asp:Label ID="lblLessSGSTdis" runat="server"></asp:Label></td>
 </tr>
              <tr class="alert alert-secondary fw-bold">
      <td colspan="4">GRAND TOTAL - (Rounded off)</td>
@@ -242,5 +261,7 @@
                 <asp:TextBox ID="txtreasion" runat="server" TextMode="MultiLine"  Visible="false"></asp:TextBox>
               <asp:Button ID="btnSubmit" CssClass="btn btn-success" runat="server"  Visible="false" Text="Submit" OnClick="btnSubmit_Click" />
               </div>
+        </div>
+    </div>
         </div>
 </asp:Content>
