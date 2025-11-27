@@ -22,9 +22,71 @@
             background: linear-gradient(135deg, #fa709a, #fee140);
             box-shadow: 0 4px 18px rgba(250, 112, 154, 0.45);
         }
+
+        .dashboard-wrapper {
+            padding: 0.5rem 0.25rem 1.5rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+            .dashboard-header-title {
+                display: flex;
+                align-items: center;
+                gap: .65rem;
+            }
+
+            .dashboard-header h2 {
+                margin: 0;
+                font-size: 1.35rem;
+                font-weight: 600;
+            }
+
+            .dashboard-header small {
+                display: block;
+                color: #6c757d;
+                font-size: .8rem;
+            }
+
+        .dashboard-section-title {
+            font-size: .9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: #6c757d;
+            margin-bottom: .25rem;
+        }
+
+        #cardsSection {
+            margin-bottom: 1.5rem;
+        }
+
+        #tablesSection .card-title {
+            font-weight: 600;
+        }
+
+        #tablesSection table {
+            font-size: .85rem;
+        }
     </style>
-    <!-- Cards -->
-    <section id="cardsSection" class="mb-4">
+    <div class="dashboard-wrapper">
+        <div class="dashboard-header">
+            <div class="dashboard-header-title">
+                <i class="bi bi-speedometer2 fs-4 text-primary"></i>
+                <div>
+                    <h2>Dashboard Overview</h2>
+                    <small>Key statistics, charts and approval tracking</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-section-title">Summary</div>
+        <!-- Cards -->
+        <section id="cardsSection" class="mb-4">
         <div class="row g-3">
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="card card-stats shadow-sm glass-card card-color-1">
@@ -34,7 +96,7 @@
                             <h3 class="mb-0">12</h3>
                         </div>
                         <div class="text-end">
-                            <i class="bi bi-people fs-2"></i>
+                            <i class="bi bi-grid-3x3-gap fs-2"></i>
                         </div>
                     </div>
                 </div>
@@ -49,7 +111,7 @@
                             <h3 class="mb-0">12</h3>
                         </div>
                         <div class="text-end">
-                            <i class="bi bi-people fs-2"></i>
+                            <i class="bi bi-building fs-2"></i>
                         </div>
                     </div>
                 </div>
@@ -62,7 +124,7 @@
                             <h3 class="mb-0">33</h3>
                         </div>
                         <div class="text-end">
-                            <i class="bi bi-people-fill fs-2"></i>
+                            <i class="bi bi-geo-alt fs-2"></i>
                         </div>
                     </div>
                 </div>
@@ -81,7 +143,8 @@
                 </div>
             </div>
         </div>
-    </section>
+        </section>
+    </div>
     <!-- Charts -->
     <section class="row mb-4">
         <div class="container-fluid mt-3">
@@ -118,10 +181,11 @@
             </div>
         </div>
 
-    </section>
+        </section>
 
-    <!-- Table -->
-    <section id="tablesSection" class="mb-4">
+        <div class="dashboard-section-title">Payment Approval Status</div>
+        <!-- Table -->
+        <section id="tablesSection" class="mb-4">
         <div class="card shadow-sm">
             <div class="card-body">
                 <h6 class="card-title">Payment Approvel Track</h6>

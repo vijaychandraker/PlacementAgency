@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace PlacementAgency
 {
@@ -62,6 +63,16 @@ namespace PlacementAgency
                         //    break;
                 }
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            FormsAuthentication.SignOut();
+
+            Response.Redirect("~/Login/Login.aspx");
         }
     }
 }
