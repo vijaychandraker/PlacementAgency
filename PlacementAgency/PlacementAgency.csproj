@@ -122,6 +122,8 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="image\admin.png" />
+    <Content Include="image\user.png" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\Registration.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -182,11 +184,14 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="UI\Admin\csmclInvoiceReport.aspx" />
+    <Content Include="UI\Admin\csmcl_AddDudd_mst.aspx" />
     <Content Include="UI\Admin\csmcl_AdminDashboard.aspx" />
     <Content Include="UI\Admin\master.aspx" />
     <Content Include="UI\Agency\csmcl_AgencyApprovel.aspx" />
     <Content Include="UI\Agency\UploadDocument.aspx" />
+    <Content Include="UI\Chatbox\csmcl_ChatBox.aspx" />
     <Content Include="UI\Dashboard\csmcl_Filetrack.aspx" />
+    <Content Include="UI\Dashboard\csmcl_ratemaster.aspx" />
     <Content Include="UI\Dashboard\Dashboard.aspx" />
     <Content Include="UI\Dist\ApproveDocument.aspx" />
     <Content Include="UI\Dist\csmclDistApproveStatus.aspx" />
@@ -273,6 +278,13 @@
     <Compile Include="UI\Admin\csmclInvoiceReport.aspx.designer.cs">
       <DependentUpon>csmclInvoiceReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Admin\csmcl_AddDudd_mst.aspx.cs">
+      <DependentUpon>csmcl_AddDudd_mst.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\csmcl_AddDudd_mst.aspx.designer.cs">
+      <DependentUpon>csmcl_AddDudd_mst.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Admin\csmcl_AdminDashboard.aspx.cs">
       <DependentUpon>csmcl_AdminDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -301,12 +313,26 @@
     <Compile Include="UI\Agency\UploadDocument.aspx.designer.cs">
       <DependentUpon>UploadDocument.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Chatbox\csmcl_ChatBox.aspx.cs">
+      <DependentUpon>csmcl_ChatBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Chatbox\csmcl_ChatBox.aspx.designer.cs">
+      <DependentUpon>csmcl_ChatBox.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dashboard\csmcl_Filetrack.aspx.cs">
       <DependentUpon>csmcl_Filetrack.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\Dashboard\csmcl_Filetrack.aspx.designer.cs">
       <DependentUpon>csmcl_Filetrack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dashboard\csmcl_ratemaster.aspx.cs">
+      <DependentUpon>csmcl_ratemaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Dashboard\csmcl_ratemaster.aspx.designer.cs">
+      <DependentUpon>csmcl_ratemaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Dashboard\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

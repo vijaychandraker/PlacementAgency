@@ -102,7 +102,7 @@ namespace PlacementAgency.UI.Agency
         {
 
             maincont.Visible = true;
-            divmsg.Visible = true;
+           // divmsg.Visible = true;
             SqlParameter[] param = new SqlParameter[]
             {
         new SqlParameter("@Month", ddlMonthAg.SelectedValue),
@@ -354,24 +354,24 @@ namespace PlacementAgency.UI.Agency
                 decimal lessCgst = totalE * 0.01m;
                 decimal lessSgst = totalE * 0.01m;
 
-                //if (lblTDSAg != null) lblTDSAg.Text = F(tds);
-                //if (lblLessCGSTAg != null) lblLessCGSTAg.Text = F(lessCgst);
-                //if (lblLessSGSTAg != null) lblLessSGSTAg.Text = F(lessSgst);
-
-                //decimal rounded = grandF - (tds + lessCgst + lessSgst);
-                //if (lblRoundedTotalAg != null) lblRoundedTotalAg.Text = F(Math.Round(rounded, 0, MidpointRounding.AwayFromZero));
-
-                if (lblTDSAg != null) lblTDSAg.Text = "Pending by State";
-                if (lblLessCGSTAg != null) lblLessCGSTAg.Text = "Pending by State";
-                if (lblLessSGSTAg != null) lblLessSGSTAg.Text = "Pending by State";
+                if (lblTDSAg != null) lblTDSAg.Text = F(tds);
+                if (lblLessCGSTAg != null) lblLessCGSTAg.Text = F(lessCgst);
+                if (lblLessSGSTAg != null) lblLessSGSTAg.Text = F(lessSgst);
 
                 decimal rounded = grandF - (tds + lessCgst + lessSgst);
-                if (lblRoundedTotalAg != null) lblRoundedTotalAg.Text = "Pending";
+                if (lblRoundedTotalAg != null) lblRoundedTotalAg.Text = F(Math.Round(rounded, 0, MidpointRounding.AwayFromZero));
+
+                //if (lblTDSAg != null) lblTDSAg.Text = "Pending by State";
+                //if (lblLessCGSTAg != null) lblLessCGSTAg.Text = "Pending by State";
+                //if (lblLessSGSTAg != null) lblLessSGSTAg.Text = "Pending by State";
+
+                //decimal rounded = grandF - (tds + lessCgst + lessSgst);
+                //if (lblRoundedTotalAg != null) lblRoundedTotalAg.Text = "Pending";
             }
             else
             {
                 maincont.Visible = false;
-                divmsg.Visible = false;
+               // divmsg.Visible = false;
             }
         }
 
