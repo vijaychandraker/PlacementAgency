@@ -33,31 +33,13 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.DropDownList ddlMonthAg;
 
         /// <summary>
-        /// Button1 control.
+        /// lnkEPF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// btnClear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClear;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.LinkButton lnkEPF;
 
         /// <summary>
         /// ddlEPF control.
@@ -78,13 +60,13 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtepf;
 
         /// <summary>
-        /// Label2 control.
+        /// lnkESIR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.LinkButton lnkESIR;
 
         /// <summary>
         /// ddlESIR control.
@@ -105,13 +87,13 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtesir;
 
         /// <summary>
-        /// Label3 control.
+        /// lnkGST control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.LinkButton lnkGST;
 
         /// <summary>
         /// ddlGST control.
@@ -132,13 +114,13 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtgst;
 
         /// <summary>
-        /// Label4 control.
+        /// lnkNEmployees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.LinkButton lnkNEmployees;
 
         /// <summary>
         /// ddlNEmpoy control.
@@ -159,13 +141,13 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtnemply;
 
         /// <summary>
-        /// Label5 control.
+        /// lnkESPC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.LinkButton lnkESPC;
 
         /// <summary>
         /// ddlspcerti control.
@@ -186,13 +168,13 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtespc;
 
         /// <summary>
-        /// Label6 control.
+        /// lnkSOP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.LinkButton lnkSOP;
 
         /// <summary>
         /// ddlSOP control.
@@ -211,6 +193,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsop;
+
+        /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
         /// btnSubmit control.
