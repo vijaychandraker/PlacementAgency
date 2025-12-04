@@ -104,25 +104,41 @@ namespace PlacementAgency.UI.Dist
                 string file = row["Filename"].ToString();
                 string id = row["ID"].ToString();
 
+                // *** NEW: load Comment safely ***
+                string agencyComment = "";
+                if (dt.Columns.Contains("Comment") && row["Comment"] != DBNull.Value)
+                    agencyComment = row["Comment"].ToString();
+
                 switch (doc)
                 {
                     case "EPF":
                         SetLink(lnkEPF, file, id);
+                        lblEPFAgComment.Text = string.IsNullOrWhiteSpace(agencyComment) ? "-" : agencyComment;
                         break;
+
                     case "ESIR":
                         SetLink(lnkESIR, file, id);
+                        lblESIRAgComment.Text = string.IsNullOrWhiteSpace(agencyComment) ? "-" : agencyComment;
                         break;
+
                     case "GST":
                         SetLink(lnkGST, file, id);
+                        lblGSTAgComment.Text = string.IsNullOrWhiteSpace(agencyComment) ? "-" : agencyComment;
                         break;
+
                     case "Name of Employees":
                         SetLink(lnkNEmployees, file, id);
+                        lblNEmployeeAgComment.Text = string.IsNullOrWhiteSpace(agencyComment) ? "-" : agencyComment;
                         break;
+
                     case "Employees Salary Payment Certificate":
                         SetLink(lnkESPC, file, id);
+                        lblESPCAgComment.Text = string.IsNullOrWhiteSpace(agencyComment) ? "-" : agencyComment;
                         break;
+
                     case "SOP":
                         SetLink(lnkSOP, file, id);
+                        lblSOPAgComment.Text = string.IsNullOrWhiteSpace(agencyComment) ? "-" : agencyComment;
                         break;
                 }
             }
@@ -130,12 +146,12 @@ namespace PlacementAgency.UI.Dist
 
         private void ResetLinks()
         {
-            lnkEPF.Text = "No Document Found"; lnkEPF.CommandArgument = "";
-            lnkESIR.Text = "No Document Found"; lnkESIR.CommandArgument = "";
-            lnkGST.Text = "No Document Found"; lnkGST.CommandArgument = "";
-            lnkNEmployees.Text = "No Document Found"; lnkNEmployees.CommandArgument = "";
-            lnkESPC.Text = "No Document Found"; lnkESPC.CommandArgument = "";
-            lnkSOP.Text = "No Document Found"; lnkSOP.CommandArgument = "";
+            lnkEPF.Text = "No Document Found"; lnkEPF.CommandArgument = ""; lblEPFAgComment.Text = "-";
+            lnkESIR.Text = "No Document Found"; lnkESIR.CommandArgument = ""; lblESIRAgComment.Text = "-";
+            lnkGST.Text = "No Document Found"; lnkGST.CommandArgument = ""; lblGSTAgComment.Text = "-";
+            lnkNEmployees.Text = "No Document Found"; lnkNEmployees.CommandArgument = ""; lblNEmployeeAgComment.Text = "-";
+            lnkESPC.Text = "No Document Found"; lnkESPC.CommandArgument = ""; lblESPCAgComment.Text = "-";
+            lnkSOP.Text = "No Document Found"; lnkSOP.CommandArgument = ""; lblSOPAgComment.Text = "-";
         }
 
         private void SetLink(LinkButton link, string fileName, string docId)
@@ -207,21 +223,21 @@ namespace PlacementAgency.UI.Dist
             }
         }
 
+        // ------------------ SUBMIT APPROVALS ------------------
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             {
-                // Gather the doc items (linkbutton commandarg = ID, dropdown = action, textbox = comment)
                 var items = new[]
                 {
-        new { DocId = lnkEPF.CommandArgument, Action = ddlEPF.SelectedValue, Comment = txtepf.Text },
-        new { DocId = lnkESIR.CommandArgument, Action = ddlESIR.SelectedValue, Comment = txtesir.Text },
-        new { DocId = lnkGST.CommandArgument, Action = ddlGST.SelectedValue, Comment = txtgst.Text },
-        new { DocId = lnkNEmployees.CommandArgument, Action = ddlNEmpoy.SelectedValue, Comment = txtnemply.Text },
-        new { DocId = lnkESPC.CommandArgument, Action = ddlspcerti.SelectedValue, Comment = txtespc.Text },
-        new { DocId = lnkSOP.CommandArgument, Action = ddlSOP.SelectedValue, Comment = txtsop.Text }
-    };
+                    new { DocId = lnkEPF.CommandArgument, Action = ddlEPF.SelectedValue, Comment = txtepf.Text },
+                    new { DocId = lnkESIR.CommandArgument, Action = ddlESIR.SelectedValue, Comment = txtesir.Text },
+                    new { DocId = lnkGST.CommandArgument, Action = ddlGST.SelectedValue, Comment = txtgst.Text },
+                    new { DocId = lnkNEmployees.CommandArgument, Action = ddlNEmpoy.SelectedValue, Comment = txtnemply.Text },
+                    new { DocId = lnkESPC.CommandArgument, Action = ddlspcerti.SelectedValue, Comment = txtespc.Text },
+                    new { DocId = lnkSOP.CommandArgument, Action = ddlSOP.SelectedValue, Comment = txtsop.Text }
+                };
 
-                // Validate: make sure at least one DocId exists for processing
                 bool anyToProcess = false;
                 foreach (var it in items)
                 {
@@ -234,15 +250,11 @@ namespace PlacementAgency.UI.Dist
 
                 if (!anyToProcess)
                 {
-                    // nothing to save
-                    // Show message (you can use a literal/label on page)
-                    // Assuming you have a label lblMessage on page:
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                     lblMessage.Text = "No changes to submit. Select Accept or Reject for documents.";
                     return;
                 }
 
-                // Use a DB transaction to apply all updates atomically
                 string connStr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
                 using (var conn = new SqlConnection(connStr))
                 {
@@ -254,9 +266,10 @@ namespace PlacementAgency.UI.Dist
                             foreach (var it in items)
                             {
                                 if (string.IsNullOrEmpty(it.DocId) || string.IsNullOrEmpty(it.Action))
-                                    continue; // skip items without ID or no action chosen
+                                    continue;
 
                                 int id = Convert.ToInt32(it.DocId);
+
                                 if (it.Action.Equals("Accept", StringComparison.OrdinalIgnoreCase))
                                 {
                                     using (var cmd = new SqlCommand("csmcl_sp_ApproveDocument", conn, tran))
@@ -272,29 +285,23 @@ namespace PlacementAgency.UI.Dist
                                     {
                                         cmd.CommandType = CommandType.StoredProcedure;
                                         cmd.Parameters.AddWithValue("@ID", id);
-                                        // protect null comment: use empty string if null
                                         string comment = it.Comment ?? string.Empty;
                                         cmd.Parameters.AddWithValue("@Dist_Comment", comment);
                                         cmd.ExecuteNonQuery();
                                     }
                                 }
-                                // else: ignore unknown action values
                             }
 
-                            // commit all
                             tran.Commit();
 
-                            // success message and refresh the visible list
                             lblMessage.ForeColor = System.Drawing.Color.Green;
                             lblMessage.Text = "Approvals updated successfully.";
-                            LoadDocuments(); // refresh UI to show status / filenames
+                            LoadDocuments();
                         }
                         catch (Exception ex)
                         {
-                            // rollback on error
-                            try { tran.Rollback(); } catch { /* ignore rollback exceptions */ }
+                            try { tran.Rollback(); } catch { }
 
-                            // log server-side
                             System.Diagnostics.Debug.WriteLine(ex);
 
                             lblMessage.ForeColor = System.Drawing.Color.Red;

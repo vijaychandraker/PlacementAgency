@@ -69,7 +69,7 @@
 <!-- Row Template Applied to All 6 Docs -->
 
 <!-- 1. EPF -->
-<div class="row mb-3">
+<div class="row mb-3 alert alert-secondary">
 <label class="col-md-3 col-form-label">1. EPF</label>
 
 <div class="col-md-3">
@@ -88,7 +88,7 @@
 </div>
 
 <!-- 2. ESIR -->
-<div class="row mb-3">
+<div class="row mb-3 alert alert-secondary">
 <label class="col-md-3 col-form-label">2. ESIR</label>
 
 <div class="col-md-3">
@@ -106,7 +106,7 @@
 </div>
 
 <!-- 3. GST -->
-<div class="row mb-3">
+<div class="row mb-3 alert alert-secondary">
 <label class="col-md-3 col-form-label">3. GST</label>
 
 <div class="col-md-3">
@@ -124,7 +124,7 @@
 </div>
 
 <!-- 4. Name of Employees -->
-<div class="row mb-3">
+<div class="row mb-3 alert alert-secondary">
 <label class="col-md-3 col-form-label">4. Name of Employees</label>
 
 <div class="col-md-3">
@@ -142,7 +142,7 @@
 </div>
 
 <!-- 5. Salary Payment Certificate -->
-<div class="row mb-3">
+<div class="row mb-3 alert alert-secondary">
 <label class="col-md-3 col-form-label">5. Employees Salary Payment Certificate</label>
 
 <div class="col-md-3">
@@ -160,7 +160,7 @@
 </div>
 
 <!-- 6. SOP -->
-<div class="row mb-3">
+<div class="row mb-3 alert alert-secondary">
 <label class="col-md-3 col-form-label">6. SOP</label>
 
 <div class="col-md-3">

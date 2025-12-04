@@ -42,6 +42,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.LinkButton lnkEPF;
 
         /// <summary>
+        /// lblEPFAgComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEPFAgComment;
+
+        /// <summary>
         /// ddlEPF control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkESIR;
+
+        /// <summary>
+        /// lblESIRAgComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblESIRAgComment;
 
         /// <summary>
         /// ddlESIR control.
@@ -96,6 +114,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.LinkButton lnkGST;
 
         /// <summary>
+        /// lblGSTAgComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGSTAgComment;
+
+        /// <summary>
         /// ddlGST control.
         /// </summary>
         /// <remarks>
@@ -121,6 +148,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkNEmployees;
+
+        /// <summary>
+        /// lblNEmployeeAgComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNEmployeeAgComment;
 
         /// <summary>
         /// ddlNEmpoy control.
@@ -150,6 +186,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.LinkButton lnkESPC;
 
         /// <summary>
+        /// lblESPCAgComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblESPCAgComment;
+
+        /// <summary>
         /// ddlspcerti control.
         /// </summary>
         /// <remarks>
@@ -175,6 +220,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkSOP;
+
+        /// <summary>
+        /// lblSOPAgComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSOPAgComment;
 
         /// <summary>
         /// ddlSOP control.

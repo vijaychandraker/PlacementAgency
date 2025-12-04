@@ -44,19 +44,20 @@
     <br /><br />
 
     <div class="card">
-        <div class="card-header">
-            Add/Update New Record
+        <div class="card-header alert alert-warning">
+            Approve/Reject Documents
         </div>
 
         <div class="card-body">
             <div class="container">
 
                 <!-- Row 1 - EPF -->
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-3 align-items-center alert alert-secondary">
                     <label class="col-md-3 col-form-label">1. EPF</label>
 
                     <div class="col-md-3">
-                        <asp:LinkButton ID="lnkEPF" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lnkEPF" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                        <asp:Label ID="lblEPFAgComment" runat="server" Text="Comment"></asp:Label>
                     </div>
 
                     <div class="col-md-3">
@@ -73,11 +74,12 @@
                 </div>
 
                 <!-- Row 2 - ESIR -->
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-3 align-items-center alert alert-secondary">
                     <label class="col-md-3 col-form-label">2. ESIR</label>
 
                     <div class="col-md-3">
-                        <asp:LinkButton ID="lnkESIR" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lnkESIR" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                        <asp:Label ID="lblESIRAgComment" runat="server" Text="Comment"></asp:Label>
                     </div>
 
                     <div class="col-md-3">
@@ -94,11 +96,12 @@
                 </div>
 
                 <!-- Row 3 - GST -->
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-3 align-items-center alert alert-secondary">
                     <label class="col-md-3 col-form-label">3. GST</label>
 
                     <div class="col-md-3">
-                        <asp:LinkButton ID="lnkGST" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lnkGST" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                        <asp:Label ID="lblGSTAgComment" runat="server" Text="Comment"></asp:Label>
                     </div>
 
                     <div class="col-md-3">
@@ -115,11 +118,12 @@
                 </div>
 
                 <!-- Row 4 - Name of Employees -->
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-3 align-items-center alert alert-secondary">
                     <label class="col-md-3 col-form-label">4. Name of Employees</label>
 
                     <div class="col-md-3">
-                        <asp:LinkButton ID="lnkNEmployees" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lnkNEmployees" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                        <asp:Label ID="lblNEmployeeAgComment" runat="server" Text="Comment"></asp:Label>
                     </div>
 
                     <div class="col-md-3">
@@ -136,11 +140,12 @@
                 </div>
 
                 <!-- Row 5 - Salary Payment Cert -->
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-3 align-items-center alert alert-secondary">
                     <label class="col-md-3 col-form-label">5. Employees Salary Payment Certificate</label>
 
                     <div class="col-md-3">
-                        <asp:LinkButton ID="lnkESPC" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lnkESPC" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                        <asp:Label ID="lblESPCAgComment" runat="server" Text="Comment"></asp:Label>
                     </div>
 
                     <div class="col-md-3">
@@ -157,13 +162,14 @@
                 </div>
 
                 <!-- Row 6 - SOP -->
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-3 align-items-center alert alert-secondary">
                     <label class="col-md-3 col-form-label">6. SOP</label>
 
 
 
                     <div class="col-md-3">
-                        <asp:LinkButton ID="lnkSOP" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lnkSOP" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                        <asp:Label ID="lblSOPAgComment" runat="server" Text="Comment"></asp:Label>
                     </div>
 
                     <div class="col-md-3">
