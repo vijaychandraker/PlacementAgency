@@ -168,6 +168,15 @@ namespace PlacementAgency
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl li3;
 
         /// <summary>
+        /// sidebarSubmenuReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sidebarSubmenuReport;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

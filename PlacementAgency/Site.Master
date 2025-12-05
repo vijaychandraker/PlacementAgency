@@ -109,22 +109,169 @@
                 padding: .45rem .75rem;
                 font-size: 0.9rem;
             }
-        }
 
-        /* Borderless toggle button (icon-only) */
-        #toggleSidebarBtn {
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-            background: transparent !important;
-            padding: .25rem .5rem;
         }
+/* server-side active on li -> style link inside it */
+#sidebarMenu .nav-item.active .nav-link {
+    background: #b7d8ff; /* selected blue */
+    border-radius: 12px;
+    color: #000 !important;
+    font-weight: 700;
+}
 
-            #toggleSidebarBtn:hover {
-                background: rgba(0,0,0,.05);
-                border-radius: .35rem;
-            }
-    </style>
+/* ensure submenu item also shows as active visually (if needed) */
+#sidebarMenu .nav-item #sidebarSubmenuReport .nav-link.active,
+#sidebarMenu .nav-item #sidebarSubmenuReport .nav-item .nav-link.active {
+    background: #b7d8ff;
+    color: #000 !important;
+    font-weight: 700;
+}
+#toggleSidebarBtn {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+/* Optional: hover effect */
+#toggleSidebarBtn:hover {
+    background: rgba(0,0,0,0.07);
+}
+    /* preserve theme color exactly */
+    #sidebarMenu {
+      background: linear-gradient(180deg, #c6e2ff 0%, #c6e2ff 100%);
+      padding: 1rem .6rem;
+      border-right: 1px solid rgba(3,28,54,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+    }
+
+    /* panel "card" look */
+    #sidebarMenu .panel {
+      background: rgba(255,255,255,0.78);
+      border-radius: 12px;
+      padding: .6rem;
+      box-shadow: 0 6px 20px rgba(3,28,54,0.04);
+      overflow: hidden;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-item { margin: 0; }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: .55rem .65rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #052e45; /* strong text */
+      font-weight: 600;
+      transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+      position: relative;
+    }
+
+    /* left icon capsule */
+    .icon-capsule {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.99), rgba(255,255,255,0.90));
+      box-shadow: 0 6px 14px rgba(3,28,54,0.06);
+      color: #0a4a67;
+      flex: 0 0 42px;
+      font-size: 1.1rem;
+    }
+
+    /* label */
+    .nav-link p { margin: 0; font-size: .96rem; }
+
+    /* subtle hover */
+    .nav-link:hover {
+      transform: translateX(6px);
+      background: rgba(255,255,255,0.18);
+      color: #001824;
+      box-shadow: 0 10px 22px rgba(2,20,40,0.06);
+    }
+
+    /* active: bright vertical bar + glow */
+    .nav-link.active {
+      background: rgba(255,255,255,0.16);
+      box-shadow: 0 14px 30px rgba(2,20,40,0.08);
+      color: #001524;
+    }
+    .nav-link.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8%;
+      bottom: 8%;
+      width: 6px;
+      background: linear-gradient(180deg,#2b78f6,#155fd0);
+      border-radius: 5px;
+      box-shadow: 0 6px 16px rgba(21,95,208,0.18);
+    }
+
+    /* small count badge (optional) */
+    .count-badge {
+      margin-left: auto;
+      background: linear-gradient(180deg,#1e66d0,#155fd0);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(21,95,208,0.14);
+    }
+
+    /* submenu */
+    #sidebarSubmenuReport { margin-top: .25rem; }
+    #sidebarSubmenuReport .nav-link { padding-left: 1.25rem; font-weight:600; font-size:.92rem; border-radius:8px; }
+
+    /* responsive tweaks */
+    @media (max-width:767.98px) {
+     .icon-capsule {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.99), rgba(255,255,255,0.90));
+    box-shadow: 0 6px 14px rgba(3,28,54,0.06);
+    color: #0a4a67;
+    flex: 0 0 42px;
+    font-size: 1.1rem;
+
+    /* 👇 Add these 2 lines */
+    border: none !important;
+    outline: none !important;
+}
+
+      .nav-link { padding:.45rem .6rem; font-size:.92rem; }
+    }
+    .nav-link.active {
+    background: #b7d8ff; /* your selected blue */
+    border-radius: 12px;
+    color: #000;
+    font-weight: 700;
+}
+
+  </style>
 </head>
 <body>
     <form runat="server">
@@ -154,7 +301,7 @@
                         <li class="nav-item"><a style="font-weight:700"> District:- </a>
                             <asp:Label ID="lbldistrict" runat="server"></asp:Label></li>
                         <li class="nav-item ms-3">
-                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-outline-danger" CausesValidation="false">
+                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-outline-danger" CausesValidation="false" OnClick="btnLogout_Click1">
                                 <i class="bi bi-box-arrow-right me-1"></i>Logout
                             </asp:LinkButton>
                         </li>
@@ -167,111 +314,157 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- SIDEBAR -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 sidebar py-3">
-                    <ul class="nav flex-column">
-                        
-                      <li id="lidashboard" runat="server" class="nav-item">
-        <a href="<%= ResolveUrl("~/UI/Dashboard/Dashboard.aspx") %>"  class="nav-link">
-            <p><i class="bi bi-speedometer2 me-2"></i>Dashboard</p>
+               <!-- ===== Refined Attractive Sidebar (replace existing <nav id="sidebarMenu">) ===== -->
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 sidebar py-4">
+  
+
+  <div class="panel">
+    <ul class="nav">
+      <li id="lidashboard" runat="server" class="nav-item" visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dashboard/Dashboard.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-speedometer2"></i></span>
+          <p>Dashboard</p>
         </a>
-    </li>
-                         <li id="lidistapprovepayroll" runat="server" class="nav-item">
-         <a href="<%= ResolveUrl("~/UI/Dist/DistApprove.aspx") %>"  class="nav-link">
-             <p><i class="bi bi-check2-circle me-2"></i>Approve Payroll</p>
-         </a>
-     </li>
-                                            <li id="liagencyapprove" runat="server" class="nav-item">
-    <a href="<%= ResolveUrl("~/UI/Agency/csmcl_AgencyApprovel.aspx") %>"  class="nav-link">
-        <p><i class="bi bi-check2-circle me-2"></i>Approve Payroll</p>
-    </a>
-</li>
-                        
-                        <li id="lipayrolentry" runat="server" class="nav-item">
-                                <a href="<%= ResolveUrl("~/UI/Dist/csmcl_DistEntry.aspx") %>"  class="nav-link">
-                                    <p><i class="bi bi-pencil-square me-2"></i>Payroll Entry</p>
-                                </a>
-                            </li>
+      </li>
 
-                        <li id="liapproveststus" runat="server" class="nav-item">
-                                <a href="<%= ResolveUrl("~/UI/Dist/csmclDistApproveStatus.aspx") %>"  class="nav-link">
-                                    <p><i class="bi bi-clipboard-check me-2"></i>Approve Status</p>
-                                </a>
-                            </li>
-                       <li id="lireport" runat="server" class="nav-item">
-        <a href="<%= ResolveUrl("~/UI/Dist/csmcl_EntryReport.aspx") %>"  class="nav-link">
-            <p><i class="bi bi-file-earmark-bar-graph me-2"></i>Update Payroll</p>
+      <li id="lidistapprovepayroll" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dist/DistApprove.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-person-check"></i></span>
+          <p>Approve Payroll</p>
         </a>
-    </li>
-                                   <li id="li1" runat="server" class="nav-item">
-    <a href="<%= ResolveUrl("~/UI/Dashboard/csmcl_Filetrack.aspx") %>"  class="nav-link">
-        <p><i class="bi bi-folder2-open me-2"></i>File Tracking</p>
-    </a>
-</li>       
-    <li id="li2" runat="server" class="nav-item">
-    <a href="<%= ResolveUrl("~/UI/Dashboard/csmcl_ratemaster.aspx") %>"  class="nav-link">
-        <p><i class="bi bi-folder2-open me-2"></i>Rate Master</p>
-    </a>
-</li>  
-                            <li id="li4" runat="server" class="nav-item">
-    <a href="<%= ResolveUrl("~/UI/Agency/UploadDocument.aspx") %>"  class="nav-link">
-        <p><i class="bi bi-folder2-open me-2"></i>Upload Document</p>
-    </a>
-</li>  
-                                                    <li id="li5" runat="server" class="nav-item">
-    <a href="<%= ResolveUrl("~/UI/Dist/ApproveDocument.aspx") %>"  class="nav-link">
-        <p><i class="bi bi-folder2-open me-2"></i>Approve Document</p>
-    </a>
-</li>  
-                                                                            <li id="li6" runat="server" class="nav-item">
-    <a href="<%= ResolveUrl("~/UI/Chatbox/csmcl_ChatBox.aspx") %>"  class="nav-link">
-        <p><i class="bi bi-folder2-open me-2"></i>Chat Box</p>
-    </a>
-</li>  
-                                                                                                    <li id="li7" runat="server" class="nav-item">
-    <a href="<%= ResolveUrl("~/UI/Admin/master.aspx") %>"  class="nav-link">
-        <p><i class="bi bi-folder2-open me-2"></i>Add/Deduct Master</p>
-    </a>
-</li>  
-                        
-                        
-                        
-                        <li id="li3" runat="server" class="nav-item">
-    <a class="nav-link d-flex justify-content-between align-items-center"
-       href="javascript:void(0);"
-       data-bs-toggle="collapse"
-       data-bs-target="#sidebarSubmenuReport"
-       aria-expanded="false"
-       aria-controls="sidebarSubmenuReport">
+      </li>
 
-        <span><i class="bi bi-file-earmark-bar-graph me-2"></i> Report</span>
-        <i class="bi bi-chevron-down small"></i>
-    </a>
+      <li id="liagencyapprove" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Agency/csmcl_AgencyApprovel.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-people-fill"></i></span>
+          <p>Agency Approval</p>
+        </a>
+      </li>
 
-    <ul id="sidebarSubmenuReport" class="collapse list-unstyled ps-4 mt-2">
-        <li>
+      <li id="lipayrolentry" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dist/csmcl_DistEntry.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-pencil-square"></i></span>
+          <p>Payroll Entry</p>
+        </a>
+      </li>
+
+      <li id="liapproveststus" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dist/csmclDistApproveStatus.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-clipboard-check"></i></span>
+          <p>Approve Status</p>
+        </a>
+      </li>
+
+      <li id="lireport" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dist/csmcl_EntryReport.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-file-earmark-bar-graph"></i></span>
+          <p>Update Payroll</p>
+          <!-- example: enable a count by adding <span class="count-badge">3</span> -->
+        </a>
+      </li>
+
+      <li id="li1" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dashboard/csmcl_Filetrack.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-folder-symlink"></i></span>
+          <p>File Tracking</p>
+        </a>
+      </li>
+
+      <li id="li2" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dashboard/csmcl_ratemaster.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-currency-rupee"></i></span>
+          <p>Rate Master</p>
+        </a>
+      </li>
+
+      <li id="li4" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Agency/UploadDocument.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-cloud-upload"></i></span>
+          <p>Upload Document</p>
+        </a>
+      </li>
+
+      <li id="li5" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Dist/ApproveDocument.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-file-earmark-check"></i></span>
+          <p>Approve Document</p>
+        </a>
+      </li>
+
+      <li id="li6" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Chatbox/csmcl_ChatBox.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-chat-dots"></i></span>
+          <p>Chat Box</p>
+        </a>
+      </li>
+
+      <li id="li7" runat="server" class="nav-item"  visible="false">
+        <a href="<%= ResolveUrl("~/UI/Admin/master.aspx") %>" class="nav-link">
+          <span class="icon-capsule"><i class="bi bi-calculator"></i></span>
+          <p>Add/Deduct Master</p>
+        </a>
+      </li>
+
+      <!-- Reports group -->
+      <li id="li3" runat="server" class="nav-item"  visible="false">
+        <a class="nav-link d-flex justify-content-between align-items-center collapsed" href="javascript:void(0);"
+           data-bs-toggle="collapse" data-bs-target="#sidebarSubmenuReport" aria-expanded="false"
+           aria-controls="sidebarSubmenuReport">
+          <span class="d-flex align-items-center gap-2">
+            <span class="icon-capsule"><i class="bi bi-bar-chart-line"></i></span>
+            <p class="mb-0">Report</p>
+          </span>
+          <i class="bi bi-chevron-down" style="font-size:.95rem;color:rgba(3,28,54,0.6)"></i>
+        </a>
+
+       <ul id="sidebarSubmenuReport" runat="server" class="collapse list-unstyled ps-3 mt-2">
+
+          <li>
             <a class="nav-link py-1" href="<%= ResolveUrl("~/UI/Dist/csmcl_EntryReport.aspx") %>">
-                <i class="bi bi-journal-text me-2"></i> District Wise
+              <i class="bi bi-journal-text me-2"></i> District Wise
             </a>
-        </li>
-        <li>
+          </li>
+          <li>
             <a class="nav-link py-1" href="<%= ResolveUrl("~/UI/Dist/csmcl_SummaryReport.aspx") %>">
-                <i class="bi bi-card-checklist me-2"></i> Agency Wise
+              <i class="bi bi-card-checklist me-2"></i> Agency Wise
             </a>
-        </li>
-         <li>
-     <a class="nav-link py-1" href="<%= ResolveUrl("~/UI/Dist/csmcl_SummaryReport.aspx") %>">
-         <i class="bi bi-card-checklist me-2"></i> Zone Wise
-     </a>
- </li>
-       
+          </li>
+          <li>
+            <a class="nav-link py-1" href="<%= ResolveUrl("~/UI/Dist/csmcl_SummaryReport.aspx") %>">
+              <i class="bi bi-signpost-2 me-2"></i> Zone Wise
+            </a>
+          </li>
+        </ul>
+      </li>
+
     </ul>
-</li>
+  </div>
 
+  <!-- auto-mark active based on href (robust) -->
+  <script>
+      (function () {
+          var links = document.querySelectorAll('#sidebarMenu a.nav-link');
+          var path = window.location.pathname.toLowerCase();
+          links.forEach(function (a) {
+              var href = (a.getAttribute('href') || '').toLowerCase();
+              if (!href) return;
+              // if href is a page path or contains the page name
+              if (path.endsWith(href) || path.indexOf(href.replace('~', '').replace('/', '')) !== -1 || path.indexOf(href.split('/').pop()) !== -1) {
+                  a.classList.add('active');
+                  var parentCollapse = a.closest('#sidebarSubmenuReport');
+                  if (parentCollapse) {
+                      var bs = bootstrap.Collapse.getOrCreateInstance(parentCollapse);
+                      bs.show();
+                      var toggler = parentCollapse.previousElementSibling;
+                      if (toggler) toggler.classList.remove('collapsed');
+                  }
+              }
+          });
+      })();
+  </script>
+</nav>
+<!-- ===== End refined sidebar ===== -->
 
-
-                       
-                    </ul>
-                </nav>
 
                 <!-- MAIN CONTENT -->
                 <main id="mainContent" class="col-md-9 col-lg-10 px-md-4 py-4">
@@ -309,5 +502,77 @@
             });
         })();
     </script>
+   <script>
+       document.addEventListener("DOMContentLoaded", function () {
+           // normalize a path: remove trailing slashes, lowercase
+           function norm(p) {
+               return (p || "").replace(/\/+$/, "").toLowerCase();
+           }
+
+           var currentPath = norm(window.location.pathname);
+           var links = document.querySelectorAll("#sidebarMenu a.nav-link");
+
+           // clear any leftover active classes (avoid duplicates)
+           links.forEach(function (lnk) { lnk.classList.remove("active"); });
+
+           links.forEach(function (link) {
+               var hrefAttr = link.getAttribute("href");
+               if (!hrefAttr) return;
+               if (/^javascript:/i.test(hrefAttr)) return;
+
+               // parse href relative to current origin so we reliably get pathname
+               var linkPath;
+               try {
+                   var u = new URL(hrefAttr, window.location.origin);
+                   linkPath = norm(u.pathname);
+               } catch (e) {
+                   // fallback: treat href as string and normalize last segment
+                   linkPath = norm(hrefAttr);
+               }
+
+               // matching criteria:
+               // 1) exact pathname match
+               // 2) current path endsWith linkPath (handles app virtual dir)
+               // 3) last segment match (Dashboard.aspx vs Dashboard.aspx?qs)
+               var sameExact = linkPath && currentPath === linkPath;
+               var endsWith = linkPath && currentPath.endsWith(linkPath);
+               var lastSegmentMatch = (currentPath.split("/").pop() === linkPath.split("/").pop());
+
+               if (sameExact || endsWith || lastSegmentMatch) {
+                   link.classList.add("active");
+
+                   // open containing submenu (if it's inside #sidebarSubmenuReport)
+                   var submenu = link.closest("#sidebarSubmenuReport");
+                   if (submenu) {
+                       // use Bootstrap Collapse API to show it if Bootstrap available
+                       try {
+                           var bs = bootstrap.Collapse.getOrCreateInstance(submenu);
+                           bs.show();
+                       } catch (_) {
+                           submenu.classList.add("show");
+                       }
+                       // also un-collapse the toggler so caret rotates correctly
+                       var toggler = submenu.previousElementSibling;
+                       if (toggler) toggler.classList.remove("collapsed");
+                   }
+               }
+
+               // Add click handler so UI highlights immediately when user clicks (before navigation)
+               link.addEventListener("click", function () {
+                   links.forEach(function (l) { l.classList.remove("active"); });
+                   link.classList.add("active");
+                   // open submenu when a submenu item clicked
+                   var submenu = link.closest("#sidebarSubmenuReport");
+                   if (submenu) {
+                       try {
+                           bootstrap.Collapse.getOrCreateInstance(submenu).show();
+                       } catch (_) { submenu.classList.add("show"); }
+                   }
+               });
+           });
+       });
+   </script>
+
+
 </body>
 </html>
