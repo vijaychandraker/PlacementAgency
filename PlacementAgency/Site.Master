@@ -302,9 +302,34 @@
                             <asp:Label ID="lbldistrict" runat="server"></asp:Label></li>
                         <li class="nav-item ms-3">
                             <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-outline-danger" CausesValidation="false" OnClick="btnLogout_Click1">
-                                <i class="bi bi-box-arrow-right me-1"></i>Logout
+                                <i class="bi bi-box-arrow-right me-1"></i>
                             </asp:LinkButton>
                         </li>
+                        <!-- NAVBAR: notification bell (place before Logout li) -->
+<li class="nav-item me-3 position-relative">
+    <a class="nav-link position-relative" href="#" 
+       role="button" data-bs-toggle="offcanvas" 
+       data-bs-target="#notificationOffcanvas"
+       aria-controls="notificationOffcanvas">
+
+        <i class="bi bi-bell" style="font-size:1.45rem;"></i>
+
+        <!-- FIXED BADGE POSITION -->
+        <span id="notifyBadge"
+              class="badge rounded-pill bg-primary position-absolute"
+              style="
+                  top: -4px;
+                  right: -6px;
+                  font-size: 0.65rem;
+                  padding: 3px 6px;
+              ">
+            2
+        </span>
+    </a>
+</li>
+
+
+
                     </ul>
                 </div>
             </div>
@@ -439,6 +464,48 @@
 
     </ul>
   </div>
+   <!-- NOTIFICATION OFFCANVAS (place before closing </body>) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="notificationOffcanvas" aria-labelledby="notificationOffcanvasLabel" style="width:320px;">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="notificationOffcanvasLabel">Notifications</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <div class="offcanvas-body p-0">
+    <div class="list-group list-group-flush" id="notificationList" style="max-height:60vh; overflow:auto;">
+      <!-- Example notification items (you will replace/populate dynamically) -->
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1">Payroll submitted</h6>
+          <small class="text-muted">2m</small>
+        </div>
+        <p class="mb-1 small">New payroll entry waiting for approval.</p>
+      </a>
+
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1">Document approved</h6>
+          <small class="text-muted">1h</small>
+        </div>
+        <p class="mb-1 small">Your document X has been approved by admin.</p>
+      </a>
+
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1">New message</h6>
+          <small class="text-muted">3h</small>
+        </div>
+        <p class="mb-1 small">You received a new chat message.</p>
+      </a>
+    </div>
+
+    <div class="border-top p-2 text-center">
+      <button id="markAllReadBtn" class="btn btn-sm btn-outline-secondary">Mark all read</button>
+      <button id="loadMoreNotifications" class="btn btn-sm btn-link">Load more</button>
+    </div>
+  </div>
+</div>
+
 
   <!-- auto-mark active based on href (robust) -->
   <script>
@@ -572,6 +639,73 @@
            });
        });
    </script>
+    <script>
+        (function () {
+            // helper to set badge count (0 hides it)
+            function setBadgeCount(count) {
+                var badge = document.getElementById('notifyBadge');
+                if (!badge) return;
+                if (!count || count <= 0) {
+                    badge.style.display = 'none';
+                } else {
+                    badge.style.display = 'inline-block';
+                    badge.textContent = count > 99 ? '99+' : count;
+                }
+            }
+
+            // Example: replace notification list items dynamically
+            function populateNotifications(items) {
+                var list = document.getElementById('notificationList');
+                if (!list) return;
+                list.innerHTML = ''; // clear current
+                if (!items || items.length === 0) {
+                    list.innerHTML = '<div class="p-3 text-center text-muted small">No new notifications</div>';
+                    setBadgeCount(0);
+                    return;
+                }
+                // build nodes
+                items.forEach(function (it) {
+                    var a = document.createElement('a');
+                    a.href = it.href || '#';
+                    a.className = 'list-group-item list-group-item-action';
+                    a.innerHTML = '<div class="d-flex w-100 justify-content-between">' +
+                        '<h6 class="mb-1">' + (it.title || 'Notification') + '</h6>' +
+                        '<small class="text-muted">' + (it.time || '') + '</small>' +
+                        '</div>' +
+                        '<p class="mb-1 small">' + (it.body || '') + '</p>';
+                    list.appendChild(a);
+                });
+
+                // update badge
+                setBadgeCount(items.filter(i => !i.read).length || items.length);
+            }
+
+            // Wire mark all read
+            document.getElementById('markAllReadBtn').addEventListener('click', function () {
+                // In production: call API to mark notifications read
+                // For UI: clear badges and mark items visually
+                var items = document.querySelectorAll('#notificationList .list-group-item');
+                items.forEach(function (el) { el.classList.remove('fw-bold'); });
+                setBadgeCount(0);
+            });
+
+            // Example: simulate fetching notifications from server on opening offcanvas
+            var offcanvasEl = document.getElementById('notificationOffcanvas');
+            offcanvasEl.addEventListener('show.bs.offcanvas', function () {
+                // Replace this with fetch('/api/notifications')...
+                var demoItems = [
+                    { title: 'Payroll submitted', body: 'New payroll entry waiting for approval.', time: '2m', read: false },
+                    { title: 'Document approved', body: 'Document X approved by admin.', time: '1h', read: false },
+                    { title: 'Message from Ramesh', body: 'Please check the attached file.', time: '3h', read: true }
+                ];
+                populateNotifications(demoItems);
+            });
+
+            // initial badge state (if server-rendered you can output a count server-side)
+            // If you want server-side count, render the number into notifyBadge on server.
+            setBadgeCount(parseInt(document.getElementById('notifyBadge')?.textContent || '0', 10));
+        })();
+    </script>
 
 
 </body>

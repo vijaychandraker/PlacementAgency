@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="csmcl_Filetrack.aspx.cs" Inherits="PlacementAgency.UI.Dashboard.csmcl_Filetrack" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        
-       
-
         .tracking-container {
             background: white;
             border-radius: 12px;
@@ -12,7 +9,6 @@
             width: 100%;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-
         .tracking-item {
             display: flex;
             align-items: flex-start;
