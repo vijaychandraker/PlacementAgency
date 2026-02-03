@@ -198,6 +198,7 @@
     <Content Include="UI\Dist\csmcl_DistEntry.aspx" />
     <Content Include="UI\Dist\csmcl_EntryReport.aspx" />
     <Content Include="UI\Dist\DistApprove.aspx" />
+    <Content Include="UI\State\csmcl_distwisereport.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -375,6 +376,13 @@
     </Compile>
     <Compile Include="UI\Dist\DistApprove.aspx.designer.cs">
       <DependentUpon>DistApprove.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\State\csmcl_distwisereport.aspx.cs">
+      <DependentUpon>csmcl_distwisereport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\State\csmcl_distwisereport.aspx.designer.cs">
+      <DependentUpon>csmcl_distwisereport.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

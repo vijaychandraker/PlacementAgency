@@ -17,7 +17,9 @@ namespace PlacementAgency.UI.Dist
         {
             if (!IsPostBack)
             {
-               // BindZone();
+                // BindZone();
+                btnApprove.Visible = true;
+                btnReject.Visible = true;
                 BindFY();
             }
         }
@@ -374,13 +376,17 @@ namespace PlacementAgency.UI.Dist
 
                 int rows = db.ExecuteNonQuery("csmcl_sp_UpdateApproveByDisthead", parameters);
 
-                if (rows > 0)
+                if (rows < 0)
                 {
-                    lblmsg.Text = "District approval successful.";
+                    btnApprove.Visible = false;
+                    btnReject.Visible = false;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ApproveSuccess",
+                        "Swal.fire({ icon: 'success', title: 'Successfully Approved', text: 'District approval successful.' });", true);
                 }
                 else
                 {
-                    lblmsg.Text = "No pending records found for approval.";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ApproveError",
+                        "Swal.fire({ icon: 'error', title: 'Approval Failed', text: 'No pending records found for approval.' });", true);
 
                 }
             }
@@ -391,6 +397,7 @@ namespace PlacementAgency.UI.Dist
         {
             txtreasion.Visible = true;
             btnSubmit.Visible = true;
+            btncacncel.Visible = true;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -406,9 +413,10 @@ namespace PlacementAgency.UI.Dist
 
                 int rows = db.ExecuteNonQuery("csmcl_sp_UpdateRejectByDisthead_note", parameters);
 
-                if (rows > 0)
+                if (rows < 0)
                 {
-                    lblmsg.Text = "District approval successful.";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ApproveError",
+                        "Swal.fire({ icon: 'error', title: 'Rejected', text: 'No pending records found for approval.' });", true);
                 }
                 else
                 {
@@ -418,6 +426,12 @@ namespace PlacementAgency.UI.Dist
             }
         }
 
-        
+        protected void btncacncel_Click(object sender, EventArgs e)
+        {
+            txtreasion.Visible = false;
+            btnSubmit.Visible = false;
+            btncacncel.Visible = false;
+
+        }
     }
 }

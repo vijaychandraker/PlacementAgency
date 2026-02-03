@@ -103,6 +103,8 @@ namespace PlacementAgency.UI.Agency
         protected void ddlMonthAg_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearAllComments();
+            btnSubmit.Visible = true;
+            btnCancel.Visible = true;
             TryLoadExisting();
         }
 
@@ -413,12 +415,13 @@ namespace PlacementAgency.UI.Agency
                             }
 
                             // update existing
-                            using (var cmd = new SqlCommand("usp_UpdateDocumentFile", conn, tran))
+                            using (var cmd = new SqlCommand("csmcl_usp_UpdateDocumentFile", conn, tran))
                             {
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 cmd.CommandTimeout = 60;
 
                                 cmd.Parameters.Add(DatabaseHelper.Param("@ID", existingId, SqlDbType.Int));
+                                cmd.Parameters.Add(DatabaseHelper.Param("@D_name", docName, SqlDbType.VarChar));
                                 cmd.Parameters.Add(DatabaseHelper.Param("@D_type", ext.TrimStart('.'), SqlDbType.VarChar));
                                 cmd.Parameters.Add(DatabaseHelper.Param("@file_size", fileSize, SqlDbType.BigInt));
                                 cmd.Parameters.Add(DatabaseHelper.Param("@Filename", filename, SqlDbType.VarChar));
@@ -426,6 +429,11 @@ namespace PlacementAgency.UI.Agency
                                 cmd.Parameters.Add(DatabaseHelper.Param("@Comment", string.IsNullOrEmpty(agencyComment) ? (object)DBNull.Value : agencyComment, SqlDbType.VarChar));
                                 cmd.Parameters.Add(DatabaseHelper.Param("@uploaded_by", uploadedBy, SqlDbType.VarChar));
                                 cmd.Parameters.Add(DatabaseHelper.Param("@uploaded_at", uploadedAt, SqlDbType.DateTime2));
+                                cmd.Parameters.Add(DatabaseHelper.Param("@District_ID", districtId, SqlDbType.Int));
+                                cmd.Parameters.Add(DatabaseHelper.Param("@Agency_ID", agencyId, SqlDbType.VarChar));
+                                cmd.Parameters.Add(DatabaseHelper.Param("@Zone_ID", zoneId, SqlDbType.VarChar));
+                                cmd.Parameters.Add(DatabaseHelper.Param("@Month", month, SqlDbType.VarChar));
+                                cmd.Parameters.Add(DatabaseHelper.Param("@FY", fy, SqlDbType.VarChar));
                                 cmd.Parameters.Add(DatabaseHelper.Param("@ApproveByDistrict", 0, SqlDbType.Int)); // reset to pending
                                 cmd.Parameters.Add(DatabaseHelper.Param("@Dist_Comment", DBNull.Value, SqlDbType.VarChar));
 
@@ -495,6 +503,9 @@ namespace PlacementAgency.UI.Agency
                 {
                     lblMessage.ForeColor = System.Drawing.Color.Green;
                     var sb = new StringBuilder();
+                    btnSubmit.Visible = false;
+                    btnCancel.Visible = false;
+
                     sb.Append("Uploaded/Updated successfully. IDs: ");
                     sb.Append(string.Join(", ", insertedIds));
                     if (sbErrors.Length > 0)

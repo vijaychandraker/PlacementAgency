@@ -255,11 +255,12 @@ Approve
 
     
    <div class="col-sm-10 offset-sm-4 ">
-           <asp:Button ID="btnApprove" CssClass="btn btn-success" runat="server" Text="Approve" OnClick="btnApprove_Click" />
-<asp:Button ID="btnReject" CssClass="btn btn-danger" runat="server" Text="Reject" OnClick="btnReject_Click" /><br /> <br />
+           <asp:Button ID="btnApprove" CssClass="btn btn-success" runat="server" Visible="false" Text="Approve" OnClick="btnApprove_Click" />
+<asp:Button ID="btnReject" CssClass="btn btn-danger" runat="server" Text="Reject" Visible="false" OnClick="btnReject_Click" /><br /> <br />
 
                 <asp:TextBox ID="txtreasion" runat="server" TextMode="MultiLine"  Visible="false"></asp:TextBox>
               <asp:Button ID="btnSubmit" CssClass="btn btn-success" runat="server"  Visible="false" Text="Submit" OnClick="btnSubmit_Click" />
+       <asp:Button ID="btncacncel" CssClass="btn btn-danger" runat="server"  Visible="false" Text="Cancel" OnClick="btncacncel_Click" />
               </div>
         </div>
     </div>

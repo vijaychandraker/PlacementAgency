@@ -13,15 +13,33 @@ namespace PlacementAgency.UI.Dist
     public partial class csmcl_EntryReport : System.Web.UI.Page
     {
         private readonly DatabaseHelper db = new DatabaseHelper();
+        string a = "4";
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             if (!IsPostBack)
             {
                 Bindmonth();
                 BindFY();
+               // BindDistrict();
 
             }
         }
+
+        //public void BindDistrict()
+        //{
+           
+        //    DataTable dtct = db.ExecuteQuery("csmcl_sp_Getalldistrict", null);
+        //    ddldistrictstate.DataSource = dtct;
+        //    ddldistrictstate.DataTextField = "District_Name";
+        //    ddldistrictstate.DataValueField = "District_ID";
+        //    ddldistrictstate.DataBind();
+
+        //    ddldistrictstate.Items.Insert(0, new ListItem("-- Select District --", ""));
+
+
+        //}
         public void Bindmonth()
         {
             DataTable dtval = db.ExecuteQuery("csmcl_sp_GetAllMonths", null);
@@ -52,21 +70,31 @@ namespace PlacementAgency.UI.Dist
         new SqlParameter("@District_ID", 101),   // replace with session or logged-in district
         new SqlParameter("@FY", ddlFYreport.SelectedValue),
         new SqlParameter("@Month", ddlmonthreport.SelectedValue),
-        new SqlParameter("@ApproveByDishead", "0")
+        new SqlParameter("@ApproveByDishead", "4")
             };
 
             DataTable dt = db.ExecuteQuery("csmcl_GetDutyEntries", param);
 
             if (dt.Rows.Count > 0)
             {
-                desabletxt();
+                if(a == "4")
+                {
+                    Enabletxt();
+                    btnupdate.Visible= true;
+                    //btncancel.Visible= true;
+                }
+                else
+                {
+                    desabletxt();
+                }
+                    
                 lblmsg.Visible = false;
                 maincont.Visible = true;
                 object note = dt.Rows[0]["RejectByDishead_Note"];
                 if (note != DBNull.Value && !string.IsNullOrEmpty(note.ToString()))
                 {
                     lblrejectMSG.Visible = true;
-                    lblrejectMSG.Text = "Reject Note: " + note.ToString();
+                    lblrejectMSG.Text = "Rejected By District: " + note.ToString();
                 }
                 else
                 {
@@ -231,12 +259,16 @@ namespace PlacementAgency.UI.Dist
                 new SqlParameter("@UpdateBy", updatedBy)
                     };
 
-                    db.ExecuteNonQuery("csmcl_UpdateDutyEntries", parameters);
+                    db.ExecuteNonQuery("csmcl_UpdateDutyEntries", parameters);  
                 }
             }
+            desabletxt();
+            btnupdate.Visible = false;
+            ScriptManager.RegisterStartupScript(this, GetType(), "ApproveSuccess",
+            "Swal.fire({ icon: 'success', title: 'Records updated successfully.', text: '' });", true);
 
-            lblmsg.Visible = true;
-            lblmsg.Text = "Records updated successfully.";
+           // lblmsg.Visible = true;
+           // lblmsg.Text = "";
         }
 
         public void desabletxt()
@@ -273,6 +305,41 @@ namespace PlacementAgency.UI.Dist
                 txtDMShop.Enabled = false;
                 txtDMShop_HC.Enabled = false;
           
+        }
+        public void Enabletxt()
+        {
+
+            txtMCLOffic.Enabled = true;
+            txtMCLOffic_HC.Enabled = true;
+            txtMCLShop.Enabled = true;
+            txtMCLShop_HC.Enabled = true;
+            txtMSoffice.Enabled = true;
+            txtMSoffice_HC.Enabled = true;
+            txtMSShop.Enabled = true;
+            txtMSShop_HC.Enabled = true;
+            txtMMOffice.Enabled = true;
+            txtMMOffice_HC.Enabled = true;
+            txtMMShop.Enabled = true;
+            txtMMShop_HC.Enabled = true;
+            txtOTCLShop.Enabled = true;
+            txtOTCLShop_HC.Enabled = true;
+            txtOTSShop.Enabled = true;
+            txtOTSShop_HC.Enabled = true;
+            txtOTMShop.Enabled = true;
+            txtOTMShop_HC.Enabled = true;
+            txtDCSOffice.Enabled = true;
+            txtDCSOffice_HC.Enabled = true;
+            txtDCSShop.Enabled = true;
+            txtDCSShop_HC.Enabled = true;
+            txtDSOffice.Enabled = true;
+            txtDSOffice_HC.Enabled = true;
+            txtDSShop.Enabled = true;
+            txtDSShop_HC.Enabled = true;
+            txtDMOffice.Enabled = true;
+            txtDMOffice_HC.Enabled = true;
+            txtDMShop.Enabled = true;
+            txtDMShop_HC.Enabled = true;
+
         }
 
     }

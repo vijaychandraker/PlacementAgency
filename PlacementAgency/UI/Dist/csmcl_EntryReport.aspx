@@ -10,6 +10,9 @@
             <div class="container text-center">
     <div class="row g-3">
 
+          
+
+
         <!-- FY -->
         <div class="col-md-4">
             <div class="input-group mb-3">
@@ -42,7 +45,9 @@
 </div>  
     <br />
 
-    <asp:Label ID="lblmsg" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+    <asp:Label ID="lblmsg" runat="server" ForeColor="Red"  class="alert alert-warning"  role="alert" Visible="false"></asp:Label>
+
+
 <asp:Label ID="lblrejectMSG" runat="server" ForeColor="Red" Visible="false"></asp:Label>
           <div class="card" id="maincont" runat="server" visible="false" >
 <div class="card-header alert alert-success">
@@ -50,9 +55,7 @@
 </div>
 <div class="card-body">
     
-    <div class="alert alert-warning" role="alert">
-  Approvel Pending From District Office
-</div>
+    
     <div class="container text-center">
 
 
@@ -170,8 +173,8 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <asp:Button ID="btnupdate" runat="server" Text="Update" Visible="false" OnClick="btnupdate_Click" />&nbsp&nbsp&nbsp
-           <asp:Button ID="btncancel" runat="server" Visible="false" Text="Cancel" />
+                        <asp:Button ID="btnupdate" runat="server" Text="Update"  class="btn btn-success" Visible="false" OnClick="btnupdate_Click" />&nbsp&nbsp&nbsp
+        
                 </tr>
 
             </tbody>

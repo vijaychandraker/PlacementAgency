@@ -17,7 +17,7 @@
     <div class="col-md-3">
         <div class="input-group">
             <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i>&nbsp; District</span>
-            <asp:DropDownList ID="ddldistrictAgent" runat="server" CssClass="form-select"
+            <asp:DropDownList ID="ddldistrictAgent" runat="server" CssClass="form-select" 
                 AutoPostBack="true" OnSelectedIndexChanged="ddldistrictAgent_SelectedIndexChanged"></asp:DropDownList>
         </div>
     </div>
@@ -183,9 +183,9 @@
 <!-- Buttons -->
 <div class="row mt-4">
 <div class="col-md-8 offset-md-4">
-    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-success me-2" Text="Submit"
+    <asp:Button ID="btnSubmit" runat="server" Visible="false" CssClass="btn btn-success me-2" Text="Submit"
         OnClick="btnSubmit_Click" />
-    <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-secondary" Text="Cancel" />
+    <asp:Button ID="btnCancel" runat="server" Visible="false" CssClass="btn btn-secondary" Text="Cancel" />
 </div>
 </div>
 
