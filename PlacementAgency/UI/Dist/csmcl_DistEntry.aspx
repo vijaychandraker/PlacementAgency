@@ -60,6 +60,10 @@
   <div class="card">
     <h5 class="card-header alert alert-success mb-0">New Duties Entry</h5>
     <div class="card-body">
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+            CssClass="alert alert-danger"
+            HeaderText="Please fix the following errors:"
+            DisplayMode="BulletList" />
       <div class="container">
 
         <!-- Row 1 -->
@@ -72,6 +76,12 @@
                 <asp:DropDownList ID="ddlFY" runat="server" AutoPostBack="true"
                   OnSelectedIndexChanged="ddlFY_SelectedIndexChanged" CssClass="form-select"
                   aria-label="Financial Year"></asp:DropDownList>
+                   <asp:RequiredFieldValidator ID="rfvFY" runat="server"
+                        ControlToValidate="ddlFY"
+                        InitialValue="0"
+                        ErrorMessage="Select Financial Year"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
               </div>
             </div>
           </div>
@@ -82,6 +92,12 @@
               <div class="input-group">
                 <span class="input-group-text" title="Month"><i class="bi bi-calendar3"></i></span>
                 <asp:DropDownList ID="ddlmonth" runat="server" CssClass="form-select" aria-label="Month"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="rfvMonth" runat="server"
+                        ControlToValidate="ddlmonth"
+                        InitialValue="0"
+                        ErrorMessage="Select Month"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
               </div>
             </div>
           </div>
@@ -95,6 +111,12 @@
               <div class="input-group">
                 <span class="input-group-text" title="Location"><i class="bi bi-geo-alt"></i></span>
                 <asp:DropDownList ID="ddllocation" runat="server" CssClass="form-select" aria-label="Location"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="rfvLocation" runat="server"
+                        ControlToValidate="ddllocation"
+                        InitialValue="0"
+                        ErrorMessage="Select Location"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
               </div>
             </div>
           </div>
@@ -105,6 +127,12 @@
               <div class="input-group">
                 <span class="input-group-text" title="Category"><i class="bi bi-tags"></i></span>
                 <asp:DropDownList ID="ddlcategory" runat="server" CssClass="form-select" aria-label="Category"></asp:DropDownList>
+                   <asp:RequiredFieldValidator ID="rfvCategory" runat="server"
+                        ControlToValidate="ddlcategory"
+                        InitialValue="0"
+                        ErrorMessage="Select Category"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
               </div>
             </div>
           </div>
@@ -118,6 +146,12 @@
               <div class="input-group">
                 <span class="input-group-text" title="Rate Type"><i class="bi bi-currency-rupee"></i></span>
                 <asp:DropDownList ID="ddlrtype" runat="server" CssClass="form-select" aria-label="Rate Type"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="rfvRateType" runat="server"
+                        ControlToValidate="ddlrtype"
+                        InitialValue="0"
+                        ErrorMessage="Select Rate Type"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
               </div>
             </div>
           </div>
@@ -128,6 +162,19 @@
               <div class="input-group">
                 <span class="input-group-text" title="Head Count"><i class="bi bi-people-fill"></i></span>
                 <asp:TextBox ID="txtheadcount" runat="server" TextMode="Number" CssClass="form-control" aria-label="Total Head Count"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvHeadCount" runat="server"
+                        ControlToValidate="txtheadcount"
+                        ErrorMessage="Enter Head Count"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
+                  <asp:RangeValidator ID="rvHeadCount" runat="server"
+                        ControlToValidate="txtheadcount"
+                        MinimumValue="1"
+                        MaximumValue="100000"
+                        Type="Integer"
+                        ErrorMessage="Head Count must be greater than 0"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
               </div>
             </div>
           </div>
@@ -141,6 +188,19 @@
               <div class="input-group">
                 <span class="input-group-text" title="Duties"><i class="bi bi-list-task"></i></span>
                 <asp:TextBox ID="duties" runat="server" TextMode="Number" CssClass="form-control" aria-label="Number of Duties"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="rfvDuties" runat="server"
+                        ControlToValidate="duties"
+                        ErrorMessage="Enter Number of Duties"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
+                  <asp:RangeValidator ID="rvDuties" runat="server"
+                        ControlToValidate="duties"
+                        MinimumValue="1"
+                        MaximumValue="100000"
+                        Type="Integer"
+                        ErrorMessage="Duties must be greater than 0"
+                        CssClass="text-danger"
+                        Display="Dynamic" />
               </div>
             </div>
           </div>
@@ -153,8 +213,8 @@
         <!-- Buttons -->
         <div class="row mt-4">
           <div class="col-md-12 text-center">
-            <asp:Button ID="btnSubmit" CssClass="btn btn-success me-2" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
-            <asp:Button ID="btnreset" CssClass="btn btn-secondary" runat="server" Text="Reset" />
+            <asp:Button ID="btnSubmit" CssClass="btn btn-success me-2" runat="server" Text="Submit" OnClick="btnSubmit_Click"   CausesValidation="true"  />
+            <asp:Button ID="btnreset" CssClass="btn btn-secondary" runat="server" Text="Reset" OnClick="btnreset_Click" CausesValidation="false" />
           </div>
         </div>
 

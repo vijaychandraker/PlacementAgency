@@ -108,11 +108,38 @@ namespace PlacementAgency.UI.Dist
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ddlcategory.SelectedValue) ||
-       string.IsNullOrEmpty(ddllocation.SelectedValue) ||
-       string.IsNullOrEmpty(ddlrtype.SelectedValue))
+            if (!Page.IsValid)
+                return;
+
+            // Extra safety validation
+            if (string.IsNullOrEmpty(ddlFY.SelectedValue) ||
+                string.IsNullOrEmpty(ddlmonth.SelectedValue) ||
+                string.IsNullOrEmpty(ddllocation.SelectedValue) ||
+                string.IsNullOrEmpty(ddlcategory.SelectedValue) ||
+                string.IsNullOrEmpty(ddlrtype.SelectedValue))
             {
-                // show validation message here
+                SweetAlertHelper.ShowError(this, "All dropdown fields are required.");
+                return;
+            }
+
+            int headCount;
+            int dutyCount;
+
+            if (!int.TryParse(txtheadcount.Text.Trim(), out headCount) || headCount <= 0)
+            {
+                SweetAlertHelper.ShowError(this, "Head Count must be a valid number greater than 0.");
+                return;
+            }
+
+            if (!int.TryParse(duties.Text.Trim(), out dutyCount) || dutyCount <= 0)
+            {
+                SweetAlertHelper.ShowError(this, "Number of Duties must be a valid number greater than 0.");
+                return;
+            }
+
+            if (dutyCount > headCount)
+            {
+                SweetAlertHelper.ShowError(this, "Duties cannot exceed Head Count.");
                 return;
             }
 
@@ -121,29 +148,42 @@ namespace PlacementAgency.UI.Dist
         new SqlParameter("@Zone_ID", "Z1"),
         new SqlParameter("@Agency_ID", "AG1"),
         new SqlParameter("@District_ID", 101),
-        new SqlParameter("@CategoryID", ddlcategory.SelectedValue),
-        new SqlParameter("@LocationID", ddllocation.SelectedValue),
-        new SqlParameter("@RtypeID", ddlrtype.SelectedValue),
-        new SqlParameter("@HCount", txtheadcount.Text.Trim()),
-        new SqlParameter("@NoOfDuties", duties.Text.Trim()),
-        new SqlParameter("@Month", ddlmonth.SelectedValue),
+        new SqlParameter("@CategoryID", Convert.ToInt32(ddlcategory.SelectedValue)),
+        new SqlParameter("@LocationID", Convert.ToInt32(ddllocation.SelectedValue)),
+        new SqlParameter("@RtypeID", Convert.ToInt32(ddlrtype.SelectedValue)),
+        new SqlParameter("@HCount", headCount),
+        new SqlParameter("@NoOfDuties", dutyCount),
+        new SqlParameter("@Month", Convert.ToInt32(ddlmonth.SelectedValue)),
         new SqlParameter("@FY", ddlFY.SelectedValue),
-        new SqlParameter("@ApproveByDishead", "0"),
+        new SqlParameter("@ApproveByDishead", 0),
         new SqlParameter("@EntryBy", "abc")
     };
 
             int rows = db.ExecuteNonQuery("csmcl_sp_InsertDutyEntry", parameters);
+
             if (rows > 0)
             {
+                ClearForm();
+                SweetAlertHelper.ShowSuccess(this, "Duty Entry Saved Successfully!");
 
             }
             else
             {
+                SweetAlertHelper.ShowError(this, "Insert failed. Try again.");
 
             }
 
         }
-
+        private void ClearForm()
+        {
+            ddlFY.SelectedIndex = 0;
+            ddlmonth.SelectedIndex = 0;
+            ddllocation.SelectedIndex = 0;
+            ddlcategory.SelectedIndex = 0;
+            ddlrtype.SelectedIndex = 0;
+            txtheadcount.Text = "";
+            duties.Text = "";
+        }
         public void BindMonthByFY(string selectedFY)
         {
             ddlmonth.Items.Clear();
@@ -177,6 +217,11 @@ namespace PlacementAgency.UI.Dist
         protected void ddlFY_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindMonthByFY(ddlFY.SelectedValue);
+        }
+
+        protected void btnreset_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
     }

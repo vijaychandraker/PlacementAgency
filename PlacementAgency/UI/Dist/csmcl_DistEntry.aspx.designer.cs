@@ -15,6 +15,15 @@ namespace PlacementAgency.UI.Dist
     {
 
         /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+
+        /// <summary>
         /// ddlFY control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFY;
+
+        /// <summary>
+        /// rfvFY control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFY;
 
         /// <summary>
         /// ddlmonth control.
@@ -33,6 +51,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.DropDownList ddlmonth;
 
         /// <summary>
+        /// rfvMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMonth;
+
+        /// <summary>
         /// ddllocation control.
         /// </summary>
         /// <remarks>
@@ -40,6 +67,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddllocation;
+
+        /// <summary>
+        /// rfvLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLocation;
 
         /// <summary>
         /// ddlcategory control.
@@ -51,6 +87,15 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.DropDownList ddlcategory;
 
         /// <summary>
+        /// rfvCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCategory;
+
+        /// <summary>
         /// ddlrtype control.
         /// </summary>
         /// <remarks>
@@ -58,6 +103,15 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlrtype;
+
+        /// <summary>
+        /// rfvRateType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRateType;
 
         /// <summary>
         /// txtheadcount control.
@@ -69,6 +123,24 @@ namespace PlacementAgency.UI.Dist
         protected global::System.Web.UI.WebControls.TextBox txtheadcount;
 
         /// <summary>
+        /// rfvHeadCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHeadCount;
+
+        /// <summary>
+        /// rvHeadCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvHeadCount;
+
+        /// <summary>
         /// duties control.
         /// </summary>
         /// <remarks>
@@ -76,6 +148,24 @@ namespace PlacementAgency.UI.Dist
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox duties;
+
+        /// <summary>
+        /// rfvDuties control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDuties;
+
+        /// <summary>
+        /// rvDuties control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvDuties;
 
         /// <summary>
         /// btnSubmit control.

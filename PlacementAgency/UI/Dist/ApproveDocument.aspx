@@ -1,10 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ApproveDocument.aspx.cs" Inherits="PlacementAgency.UI.Dist.ApproveDocument" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<!-- Bootstrap CSS (usually in <head>) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- Bootstrap JS bundle (includes Popper) - MUST be before your modal JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="card">
         <div class="card-header alert alert-success">
@@ -32,7 +28,8 @@
                             </label>
                             <asp:DropDownList ID="ddlMonthAg" runat="server" AutoPostBack="true"
                                 OnSelectedIndexChanged="ddlMonthAg_SelectedIndexChanged"
-                                CssClass="form-select"></asp:DropDownList>
+                                CssClass="form-select">
+                            </asp:DropDownList>
                         </div>
                     </div>
 
@@ -41,7 +38,8 @@
         </div>
     </div>
 
-    <br /><br />
+    <br />
+    <br />
 
     <div class="card">
         <div class="card-header alert alert-warning">
@@ -209,9 +207,9 @@
 
                 <div class="modal-body text-center">
 
-                    <iframe id="previewFrame" style="width:100%; height:80vh; display:none;" frameborder="0"></iframe>
+                    <iframe id="previewFrame" style="width: 100%; height: 80vh; display: none;" frameborder="0"></iframe>
 
-                    <img id="previewImage" style="max-width:100%; max-height:80vh; display:none;" />
+                    <img id="previewImage" style="max-width: 100%; max-height: 80vh; display: none;" />
 
                 </div>
 
