@@ -15,7 +15,10 @@ namespace PlacementAgency.Login
             if (!IsPostBack)
             {
                 // ensure captcha image is requested at first load if you set it server-side
-                // imgCaptcha.ImageUrl = ResolveUrl("~/helpers/Captcha.ashx?t=" + DateTime.UtcNow.Ticks);
+                if (imgCaptcha != null)
+                {
+                    imgCaptcha.ImageUrl = ResolveUrl("~/helpers/Captcha.ashx?t=" + DateTime.UtcNow.Ticks);
+                }
             }
         }
         protected void btnSignIn_Click(object sender, EventArgs e)
