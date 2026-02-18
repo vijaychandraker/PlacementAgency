@@ -20,6 +20,17 @@ namespace PlacementAgency.UI.Dashboard
             String Zone_Name =  Session["Zone_Name"] != null ? Session["Zone_Name"].ToString() : string.Empty;
             String Agency_ID =  Session["Agency_ID"] != null ? Session["Agency_ID"].ToString() : string.Empty;
             String Agency_Name =  Session["Agency_Name"] != null ? Session["Agency_Name"].ToString() : string.Empty;
+
+
+            DateTime currentDate = DateTime.Now;
+            DateTime previousMonthDate = currentDate.AddMonths(-1);
+
+            int prevMonth = previousMonthDate.Month;
+            int prevYear = previousMonthDate.Year;
+
+            string prevMonthName = previousMonthDate.ToString("MMMM"); // January, February...
+            lblmonth.Text = prevMonthName;
+
         }
     }
 }

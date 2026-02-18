@@ -1,274 +1,403 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="PlacementAgency.UI.Dashboard.Dashboard" %>
-
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="PlacementAgency.UI.Dashboard.Dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        .card-color-1 {
-            background: linear-gradient(135deg, #ff6a88, #ff99ac);
-            box-shadow: 0 4px 18px rgba(255, 105, 135, 0.45);
+        :root {
+            --dash-bg: linear-gradient(180deg, #f5f9ff 0%, #eef6ff 55%, #fdfefe 100%);
+            --panel-bg: #ffffff;
+            --text-main: #19324d;
+            --text-muted: #5b7289;
+            --line-soft: #dbe7f3;
+            --accent-1: #1f8ef1;
+            --accent-2: #00a896;
+            --accent-3: #f59f00;
+            --accent-4: #f76707;
         }
 
-        .card-color-2 {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            box-shadow: 0 4px 18px rgba(79, 172, 254, 0.45);
+        .dashboard-shell {
+            background: var(--dash-bg);
+            border: 1px solid #e6eef7;
+            border-radius: 16px;
+            padding: 1.1rem;
         }
 
-        .card-color-3 {
-            background: linear-gradient(135deg, #43e97b, #38f9d7);
-            box-shadow: 0 4px 18px rgba(67, 233, 123, 0.45);
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, #eff6ff 0%, #e7f8ff 100%);
+            border: 1px solid #d9e7f5;
+            border-radius: 14px;
+            padding: .95rem 1.1rem;
+            margin-bottom: 1rem;
+            animation: rise .45s ease-out;
         }
 
-        .card-color-4 {
-            background: linear-gradient(135deg, #fa709a, #fee140);
-            box-shadow: 0 4px 18px rgba(250, 112, 154, 0.45);
+        .hero h2 {
+            margin: 0;
+            font-size: 1.35rem;
+            color: var(--text-main);
+            font-weight: 700;
         }
 
-        .dashboard-wrapper {
-            padding: 0.5rem 0.25rem 1.5rem;
+        .hero p {
+            margin: .1rem 0 0;
+            color: var(--text-muted);
+            font-size: .88rem;
         }
 
-        .dashboard-header {
+        .hero-badge {
+            background: #fff;
+            border: 1px solid #d8e8f8;
+            color: #2f4f6d;
+            border-radius: 999px;
+            padding: .35rem .75rem;
+            font-size: .78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .kpi-card {
+            border: 0;
+            border-radius: 14px;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            min-height: 118px;
+            animation: rise .45s ease-out;
+        }
+
+        .kpi-card .card-body {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            gap: .6rem;
         }
 
-            .dashboard-header-title {
-                display: flex;
-                align-items: center;
-                gap: .65rem;
-            }
-
-            .dashboard-header h2 {
-                margin: 0;
-                font-size: 1.35rem;
-                font-weight: 600;
-            }
-
-            .dashboard-header small {
-                display: block;
-                color: #6c757d;
-                font-size: .8rem;
-            }
-
-        .dashboard-section-title {
-            font-size: .9rem;
-            font-weight: 600;
+        .kpi-title {
+            margin: 0 0 .2rem;
             text-transform: uppercase;
-            letter-spacing: .06em;
-            color: #6c757d;
+            letter-spacing: .05em;
+            font-size: .72rem;
+            font-weight: 700;
+            opacity: .95;
+        }
+
+        .kpi-value {
+            margin: 0;
+            font-size: 1.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .kpi-icon {
+            font-size: 2rem;
+            opacity: .9;
+        }
+
+        .kpi-1 {
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, .28);
+        }
+
+        .kpi-2 {
+            background: linear-gradient(135deg, #00a896, #2dc653);
+            box-shadow: 0 12px 24px rgba(45, 198, 83, .24);
+        }
+
+        .kpi-3 {
+            background: linear-gradient(135deg, #f59f00, #f76707);
+            box-shadow: 0 12px 24px rgba(245, 159, 0, .24);
+        }
+
+        .kpi-4 {
+            background: linear-gradient(135deg, #ef4444, #f43f5e);
+            box-shadow: 0 12px 24px rgba(244, 63, 94, .24);
+        }
+
+        .panel-card {
+            border: 1px solid var(--line-soft);
+            border-radius: 14px;
+            box-shadow: 0 8px 22px rgba(16, 58, 97, .06);
+            animation: rise .55s ease-out;
+        }
+
+        .panel-card .card-title {
             margin-bottom: .25rem;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-main);
         }
 
-        #cardsSection {
-            margin-bottom: 1.5rem;
+        .panel-sub {
+            color: var(--text-muted);
+            font-size: .8rem;
+            margin-bottom: .8rem;
         }
 
-        #tablesSection .card-title {
+        .chart-wrap {
+            position: relative;
+            height: 330px;
+        }
+
+        .chart-wrap-sm {
+            position: relative;
+            height: 330px;
+        }
+
+        .legend-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+            margin-top: .75rem;
+        }
+
+        .legend-chip {
+            border-radius: 999px;
+            padding: .25rem .55rem;
+            font-size: .74rem;
             font-weight: 600;
+            color: #fff;
         }
 
-        #tablesSection table {
-            font-size: .85rem;
+        .approval-table thead th {
+            font-size: .79rem;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .approval-table tbody td {
+            font-size: .84rem;
+            vertical-align: middle;
+        }
+
+        .status-pill {
+            border-radius: 999px;
+            padding: .2rem .55rem;
+            font-size: .72rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .status-ok {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-na {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .dashboard-shell {
+                padding: .75rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .chart-wrap,
+            .chart-wrap-sm {
+                height: 280px;
+            }
         }
     </style>
-    <div class="dashboard-wrapper">
-        <div class="dashboard-header">
-            <div class="dashboard-header-title">
-                <i class="bi bi-speedometer2 fs-4 text-primary"></i>
-                <div>
-                    <h2>Dashboard Overview</h2>
-                    <small>Key statistics, charts and approval tracking</small>
-                </div>
+
+    <div class="dashboard-shell">
+        <div class="hero">
+            <div>
+                <h2><i class="bi bi-speedometer2 me-2"></i>Dashboard Overview</h2>
+                <p>Snapshot of zone, agency, district manpower and payment workflow status.</p>
             </div>
+            <span class="hero-badge"><i class="bi bi-calendar-week me-1"></i>FY 2025-26</span>
         </div>
 
-        <div class="dashboard-section-title">Summary</div>
-        <!-- Cards -->
-        <section id="cardsSection" class="mb-4">
-        <div class="row g-3">
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card card-stats shadow-sm glass-card card-color-1">
-                    <div class="card-body">
-                        <div>
-                            <h6 class="text-uppercase text-muted">Total Zone</h6>
-                            <h3 class="mb-0">12</h3>
-                        </div>
-                        <div class="text-end">
-                            <i class="bi bi-grid-3x3-gap fs-2"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card card-stats shadow-sm glass-card card-color-2">
-                    <div class="card-body">
-                        <div>
-                            <h6 class="text-uppercase text-muted">Total Agency</h6>
-                            <h3 class="mb-0">12</h3>
-                        </div>
-                        <div class="text-end">
-                            <i class="bi bi-building fs-2"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card card-stats shadow-sm glass-card card-color-3">
-                    <div class="card-body">
-                        <div>
-                            <h6 class="text-uppercase text-muted">Total District</h6>
-                            <h3 class="mb-0">33</h3>
-                        </div>
-                        <div class="text-end">
-                            <i class="bi bi-geo-alt fs-2"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card card-stats shadow-sm glass-card card-color-4">
-                    <div class="card-body">
-                        <div>
-                            <h6 class="text-uppercase text-muted">Total ManPower</h6>
-                            <h3 class="mb-0">3726</h3>
-                        </div>
-                        <div class="text-end">
-                            <i class="bi bi-people fs-2"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    <!-- Charts -->
-    <section class="row mb-4">
-        <div class="container-fluid mt-3">
+        <section class="mb-4">
             <div class="row g-3">
-
-                <!-- Bar Chart -->
-                <div class="col-lg-8">
-                    <div class="card h-100">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card kpi-card kpi-1">
                         <div class="card-body">
-                            <h5 class="card-title">Zone Wise Total Manpower FY 2025-26</h5>
-                            <canvas id="myBarChart" style="height: 380px;"></canvas>
+                            <div>
+                                <p class="kpi-title">Total Zone</p>
+                                <h3 class="kpi-value">12</h3>
+                            </div>
+                            <i class="bi bi-grid-3x3-gap-fill kpi-icon"></i>
                         </div>
                     </div>
                 </div>
-
-                <!-- Donut Chart -->
-                <div class="col-lg-4">
-                    <div class="card h-100">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card kpi-card kpi-2">
                         <div class="card-body">
-                            <h5 class="card-title">Post Wise Total</h5>
-                            <canvas id="donutChart" style="height: 980px;"></canvas>
+                            <div>
+                                <p class="kpi-title">Total Agency</p>
+                                <h3 class="kpi-value">12</h3>
+                            </div>
+                            <i class="bi bi-building kpi-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card kpi-card kpi-3">
+                        <div class="card-body">
+                            <div>
+                                <p class="kpi-title">Total District</p>
+                                <h3 class="kpi-value">33</h3>
+                            </div>
+                            <i class="bi bi-geo-alt-fill kpi-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card kpi-card kpi-4">
+                        <div class="card-body">
+                            <div>
+                                <p class="kpi-title">Total Manpower</p>
+                                <h3 class="kpi-value">3726</h3>
+                            </div>
+                            <i class="bi bi-people-fill kpi-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                            <div class="mt-2">
-                                <span class="badge" style="background: rgba(0, 200, 150, 0.8);">Legal Officer</span>
-                                <span class="badge" style="background: #ff6384;">Asst. Grade-03</span>
-                                <span class="badge" style="background: #36a2eb;">Chief Salesman</span>
-                                <span class="badge" style="background: #ffcd56;">Salesman</span>
-                                <span class="badge" style="background: #9966ff;">MPW (Office)</span>
+        <section class="mb-4">
+            <div class="row g-3">
+                <div class="col-lg-8">
+                    <div class="card panel-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Zone Wise Total Manpower</h5>
+                            <p class="panel-sub">Comparative manpower distribution by zone for FY 2025-26</p>
+                            <div class="chart-wrap">
+                                <canvas id="myBarChart"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        </section>
-
-        <div class="dashboard-section-title">Payment Approval Status</div>
-        <!-- Table -->
-        <section id="tablesSection" class="mb-4">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h6 class="card-title">Payment Approvel Track</h6>
-                <div class="table-responsive">
-                    <table class="table table-hover table-sm align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>#</th>
-                                <th>District Name</th>
-                                <th>Dist Opt</th>
-                                <th>District</th>
-                                <th>Agency</th>
-                                <th>District</th>
-                                <th>State</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Raipur</td>
-                                <td><span class="badge bg-success">Sumitted</span></td>
-                                 <td><span class="badge bg-success">Approve</span></td>
-                                <td><span class="badge bg-success">Approve</span></td>
-                                <td><span class="badge bg-success">Approve</span></td>
-                                 <td><span class="badge bg-warning text-dark">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Balodabazar-Bhatapara</td>
-                                <td><span class="badge bg-warning">Not Submitted</span></td>
-                                <td><span">-</span></td>
-                                <td><span>-</span></td>
-                                <td><span>-</span></td>
-                                  <td><span>-</span></td>
-                            </tr>
-                            <!-- more rows... -->
-                        </tbody>
-                    </table>
+                <div class="col-lg-4">
+                    <div class="card panel-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Post Wise Total</h5>
+                            <p class="panel-sub">Current manpower split by post category</p>
+                            <div class="chart-wrap-sm">
+                                <canvas id="donutChart"></canvas>
+                            </div>
+                            <div class="legend-chips">
+                                <span class="legend-chip" style="background:#00a896;">Legal Officer</span>
+                                <span class="legend-chip" style="background:#ef4444;">Asst. Grade-03</span>
+                                <span class="legend-chip" style="background:#1f8ef1;">Chief Salesman</span>
+                                <span class="legend-chip" style="background:#f59f00;">Salesman</span>
+                                <span class="legend-chip" style="background:#8b5cf6;">MPW (Office)</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section>
+            <div class="card panel-card">
+                <div class="card-body">
+                    <h5 class="card-title">Payment Approval Track</h5>
+                    <p class="panel-sub">District to state approval progression overview</p>
+                    <div class="table-responsive">
+                        <table class="table table-hover approval-table align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Zone No</th>
+                                    <th>District Name</th>
+                                    <th>Final Submit (<asp:Label ID="lblmonth" runat="server"></asp:Label>)</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Zone 1</td>
+                                    <td>Raipur</td>
+                                    <td><span class="status-pill status-ok">Submitted</span></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Zone 2</td>
+                                    <td>Balodabazar-Bhatapara</td>
+                                    <td><span class="status-pill status-pending">Not Submitted</span></td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- DataLabels Plugin -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script>
-        // IMPORTANT: Register plugin
         Chart.register(ChartDataLabels);
-        const ctx = document.getElementById('myBarChart').getContext('2d');
-        const myBarChart = new Chart(ctx, {
+
+        const barCtx = document.getElementById('myBarChart').getContext('2d');
+        new Chart(barCtx, {
             type: 'bar',
             data: {
                 labels: ["Zone1", "Zone2", "Zone3", "Zone4", "Zone5", "Zone6", "Zone7", "Zone8", "Zone9", "Zone10", "Zone11", "Zone12"],
                 datasets: [{
-                    label: "Sales",
+                    label: "Manpower",
                     data: [595, 254, 377, 257, 242, 267, 293, 231, 297, 281, 275, 260],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 206, 86, 0.8)',
-                        'rgba(75, 192, 192, 0.8)',
-                        'rgba(153, 102, 255, 0.8)',
-                        'rgba(255, 159, 64, 0.8)',
-                        'rgba(255, 140, 180, 0.8)',
-                        'rgba(0, 200, 150, 0.8)',
-                        'rgba(120, 94, 240, 0.8)',
-                        'rgba(255, 80, 80, 0.8)',
-                        'rgba(0, 180, 255, 0.8)',
-                        'rgba(255, 220, 100, 0.8)'
+                        'rgba(31, 142, 241, 0.82)',
+                        'rgba(0, 168, 150, 0.82)',
+                        'rgba(245, 159, 0, 0.82)',
+                        'rgba(247, 103, 7, 0.82)',
+                        'rgba(14, 165, 233, 0.82)',
+                        'rgba(239, 68, 68, 0.82)',
+                        'rgba(21, 128, 61, 0.82)',
+                        'rgba(2, 132, 199, 0.82)',
+                        'rgba(251, 146, 60, 0.82)',
+                        'rgba(132, 204, 22, 0.82)',
+                        'rgba(217, 70, 239, 0.82)',
+                        'rgba(59, 130, 246, 0.82)'
                     ],
-                    borderWidth: 1,
-                    borderColor: '#fff',
+                    borderRadius: 6,
+                    borderSkipped: false
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
                     datalabels: {
                         anchor: 'end',
-                        align: 'top',
-                        color: '#000',
-                        font: { weight: 'bold', size: 12 },
+                        align: 'end',
+                        color: '#0f172a',
+                        font: { weight: '700', size: 11 },
                         formatter: (value) => value
                     }
                 },
@@ -276,100 +405,41 @@
                     y: {
                         beginAtZero: true,
                         max: 700,
-                        grid: { display: false }      // ← remove Y-axis gridlines
+                        grid: { color: 'rgba(148, 163, 184, 0.18)' }
                     },
                     x: {
-                        grid: { display: false }      // ← remove X-axis gridlines
+                        grid: { display: false }
                     }
                 }
             }
         });
-    </script>
-    <script>
-        const ctx2 = document.getElementById('donutChart').getContext('2d');
-        new Chart(ctx2, {
+
+        const donutCtx = document.getElementById('donutChart').getContext('2d');
+        new Chart(donutCtx, {
             type: 'doughnut',
             data: {
                 labels: ["Legal Officer", "Asst. Grade-03", "Chief Salesman", "Salesman", "MPW (Office)"],
                 datasets: [{
                     data: [1, 25, 728, 2230, 741],
                     backgroundColor: [
-                        'rgba(0, 200, 150, 0.8)',
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 206, 86, 0.8)',
-                        'rgba(153, 102, 255, 0.8)'
+                        'rgba(0, 168, 150, 0.88)',
+                        'rgba(239, 68, 68, 0.88)',
+                        'rgba(31, 142, 241, 0.88)',
+                        'rgba(245, 159, 0, 0.88)',
+                        'rgba(139, 92, 246, 0.88)'
                     ],
-                    borderWidth: 1,
-                    borderColor: '#fff'
+                    borderColor: '#fff',
+                    borderWidth: 2
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        display: false
-                    }
+                    legend: { display: false }
                 },
-                cutout: "50%"   // donut hole size
+                cutout: "58%"
             }
         });
     </script>
-   <%-- <script>
-        Chart.register(ChartDataLabels);
-        const ctx3 = document.getElementById('donutChart').getContext('2d');
-        const myBarChart3 = new Chart(ctx3, {
-            type: 'bar',
-            data: {
-                labels: [
-                    "Zone1", "Zone2", "Zone3", "Zone4", "Zone5", "Zone6",
-                    "Zone7", "Zone8", "Zone9", "Zone10", "Zone11", "Zone12"
-                ],
-                datasets: [{
-                    label: "Sales",
-                    data: [595, 254, 377, 257, 242, 267, 293, 231, 297, 281, 275, 260],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 206, 86, 0.8)',
-                        'rgba(75, 192, 192, 0.8)',
-                        'rgba(153, 102, 255, 0.8)',
-                        'rgba(255, 159, 64, 0.8)',
-                        'rgba(255, 140, 180, 0.8)',
-                        'rgba(0, 200, 150, 0.8)',
-                        'rgba(120, 94, 240, 0.8)',
-                        'rgba(255, 80, 80, 0.8)',
-                        'rgba(0, 180, 255, 0.8)',
-                        'rgba(255, 220, 100, 0.8)'
-                    ],
-                    borderColor: '#fff',
-                    borderWidth: 1,
-
-                }]
-            },
-            options: {
-                responsive: true,
-                indexAxis: 'y',
-                plugins: {
-                    legend: { display: false },
-                    datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        color: '#000',
-                        font: { weight: 'bold', size: 12 },
-                        formatter: (value) => value}},
-                scales: {
-                    x:{
-                        beginAtZero: true,
-                        max: 700
-                    },
-                    y: {
-                        ticks: {
-                            autoSkip: false
-                        }
-                    }
-                }
-            }
-        });
-    </script>--%>
 </asp:Content>

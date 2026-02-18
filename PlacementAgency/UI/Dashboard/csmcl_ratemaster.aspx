@@ -216,8 +216,37 @@
             </EditItemTemplate>
         </asp:TemplateField>
 
-        <asp:CommandField ShowEditButton="True" />
-        <asp:CommandField ShowDeleteButton="True" />
+        <asp:TemplateField HeaderText="Action">
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkEdit"
+                    runat="server"
+                    CommandName="Edit"
+                    CssClass="btn btn-sm btn-outline-primary me-1">
+                    <i class="bi bi-pencil-square"></i> Edit
+                </asp:LinkButton>
+                <asp:LinkButton ID="lnkDelete"
+                    runat="server"
+                    CommandName="Delete"
+                    CssClass="btn btn-sm btn-outline-danger"
+                    OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                    <i class="bi bi-trash"></i> Delete
+                </asp:LinkButton>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:LinkButton ID="lnkUpdate"
+                    runat="server"
+                    CommandName="Update"
+                    CssClass="btn btn-sm btn-success me-1">
+                    <i class="bi bi-check-circle"></i> Update
+                </asp:LinkButton>
+                <asp:LinkButton ID="lnkCancel"
+                    runat="server"
+                    CommandName="Cancel"
+                    CssClass="btn btn-sm btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </asp:LinkButton>
+            </EditItemTemplate>
+        </asp:TemplateField>
 
     </Columns>
 

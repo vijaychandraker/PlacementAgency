@@ -1,61 +1,125 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="csmcl_distwisereport.aspx.cs" Inherits="PlacementAgency.UI.State.csmcl_distwisereport" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="csmcl_distwisereport.aspx.cs" Inherits="PlacementAgency.UI.State.csmcl_distwisereport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- 
- <div class="card">
-<div class="card-header alert alert-success">
- Search Record
-</div>
-<div class="card-body">
- <div class="container text-center">
- <div class="row g-3">
+    <style>
+        .dist-report-shell {
+            background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+            border: 1px solid #e1edf8;
+            border-radius: 16px;
+            padding: 1rem;
+        }
 
- <!-- District -->
- <div class="col-md-3">
- <div class="input-group">
- <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i>&nbsp; District</span>
- <asp:DropDownList ID="ddldistrictAgent" runat="server" CssClass="form-select"></asp:DropDownList>
- </div>
- </div>
+        .filter-card .card-header,
+        .report-card .card-header,
+        .docs-card .card-header {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-weight: 700;
+        }
 
- <!-- FY -->
- <div class="col-md-3">
- <div class="input-group">
- <span class="input-group-text"><i class="bi bi-calendar-range"></i>&nbsp; FY</span>
- <asp:DropDownList ID="ddlFYAg" runat="server" CssClass="form-select" AutoPostBack="true"
- OnSelectedIndexChanged="ddlFY_SelectedIndexChanged"></asp:DropDownList>
- </div>
- </div>
+        .filter-label {
+            display: block;
+            margin-bottom: .35rem;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            font-weight: 700;
+            color: #44617d;
+        }
 
- <!-- Month -->
- <div class="col-md-3"> 
- <div class="input-group">
- <span class="input-group-text"><i class="bi bi-calendar3"></i>&nbsp; Month</span>
- <asp:DropDownList ID="ddlMonthAg" runat="server" CssClass="form-select"></asp:DropDownList>
- </div>
- </div>
+        .report-matrix thead td {
+            background: #f2f8ff;
+            color: #3d5975;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            font-size: .78rem;
+        }
 
- <!-- Submit Button -->
- <div class="col-md-3 d-flex align-items-end">
- <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="btnSubmit_Click1" />&nbsp
- <asp:Button ID="btnclr" runat="server" Text="Clear" CssClass="btn btn-warning" />
- <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-primary ms-2" OnClientClick="printElement('<%= maincont.ClientID %>','<%= ddldistrictAgent.ClientID %>','<%= ddlFYAg.ClientID %>','<%= ddlMonthAg.ClientID %>'); return false;" CausesValidation="false" />
- </div>
+        .report-matrix td {
+            vertical-align: middle;
+            font-size: .86rem;
+        }
 
- </div>
- </div>
- </div>
- </div>
+        .summary-row {
+            background: #eef5fd !important;
+            font-weight: 700;
+        }
+
+        .doc-row {
+            border: 1px solid #dce8f4;
+            border-radius: 10px;
+            padding: .65rem .45rem;
+            margin-bottom: .6rem;
+            background: #fbfdff;
+        }
+
+        .doc-link {
+            font-weight: 600;
+            text-decoration: none;
+            word-break: break-all;
+        }
+    </style>
+
+    <div class="dist-report-shell">
+        <div class="card filter-card">
+            <div class="card-header alert alert-success">
+                <i class="bi bi-funnel-fill"></i>Search Record
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row g-3">
+
+                        <!-- District -->
+                        <div class="col-md-3">
+                            <label class="filter-label">District</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                                <asp:DropDownList ID="ddldistrictAgent" runat="server" CssClass="form-select"></asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <!-- FY -->
+                        <div class="col-md-3">
+                            <label class="filter-label">Financial Year</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
+                                <asp:DropDownList ID="ddlFYAg" runat="server" CssClass="form-select" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlFY_SelectedIndexChanged"></asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <!-- Month -->
+                        <div class="col-md-3">
+                            <label class="filter-label">Month</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                                <asp:DropDownList ID="ddlMonthAg" runat="server" CssClass="form-select"></asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="col-md-3 d-flex align-items-end gap-2">
+                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="btnSubmit_Click1" />
+                            <asp:Button ID="btnclr" runat="server" Text="Clear" CssClass="btn btn-warning" />
+                            <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-primary" OnClientClick="printElement('<%= maincont.ClientID %>','<%= ddldistrictAgent.ClientID %>','<%= ddlFYAg.ClientID %>','<%= ddlMonthAg.ClientID %>'); return false;" CausesValidation="false" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
  <asp:Label ID="lblmsg" runat="server" Text="Label" Visible="false"></asp:Label>
  <br />
- <asp:Panel ID="maincont" runat="server" CssClass="card" Visible="false">
+ <asp:Panel ID="maincont" runat="server" CssClass="card report-card" Visible="false">
 <div class="card-header alert alert-success">
- Search Record
+ <i class="bi bi-table"></i>District Wise Report
 </div>
 <div class="card-body">
  <div class="container text-center">
 
- <table class="table table-bordered">
+ <table class="table table-bordered report-matrix">
  <tr class="alert alert-warning fw-bold">
  <td>PARTICULARS</td>
  <td>Rate / Pay Per Month</td>
@@ -340,20 +404,20 @@
  <br />
  <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-       <div class="card" runat="server" id="document" visible="false">
+       <div class="card docs-card" runat="server" id="document" visible="false">
        <div class="card-header alert alert-warning">
-           Approved
+           <i class="bi bi-patch-check-fill"></i>Approved Documents
        </div>
 
        <div class="card-body">
-           <div class="container">
+           <div class="container-fluid">
 
                <!-- Row 1 - EPF -->
-               <div class="row mb-3 align-items-center alert alert-secondary">
+               <div class="row mb-3 align-items-center doc-row">
                    <label class="col-md-3 col-form-label">1. EPF</label>
 
                    <div class="col-md-3">
-                       <asp:LinkButton ID="lnkEPF" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                       <asp:LinkButton ID="lnkEPF" runat="server" CssClass="doc-link" OnClick="lnk_Click"></asp:LinkButton><br />
                        <asp:Label ID="lblEPFAgComment" runat="server" Text="Comment"></asp:Label>
                    </div>
 
@@ -365,11 +429,11 @@
                </div>
 
                <!-- Row 2 - ESIR -->
-               <div class="row mb-3 align-items-center alert alert-secondary">
+               <div class="row mb-3 align-items-center doc-row">
                    <label class="col-md-3 col-form-label">2. ESIR</label>
 
                    <div class="col-md-3">
-                       <asp:LinkButton ID="lnkESIR" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                       <asp:LinkButton ID="lnkESIR" runat="server" CssClass="doc-link" OnClick="lnk_Click"></asp:LinkButton><br />
                        <asp:Label ID="lblESIRAgComment" runat="server" Text="Comment"></asp:Label>
                    </div>
 
@@ -381,11 +445,11 @@
                </div>
 
                <!-- Row 3 - GST -->
-               <div class="row mb-3 align-items-center alert alert-secondary">
+               <div class="row mb-3 align-items-center doc-row">
                    <label class="col-md-3 col-form-label">3. GST</label>
 
                    <div class="col-md-3">
-                       <asp:LinkButton ID="lnkGST" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                       <asp:LinkButton ID="lnkGST" runat="server" CssClass="doc-link" OnClick="lnk_Click"></asp:LinkButton><br />
                        <asp:Label ID="lblGSTAgComment" runat="server" Text="Comment"></asp:Label>
                    </div>
 
@@ -397,11 +461,11 @@
                </div>
 
                <!-- Row 4 - Name of Employees -->
-               <div class="row mb-3 align-items-center alert alert-secondary">
+               <div class="row mb-3 align-items-center doc-row">
                    <label class="col-md-3 col-form-label">4. Name of Employees</label>
 
                    <div class="col-md-3">
-                       <asp:LinkButton ID="lnkNEmployees" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                       <asp:LinkButton ID="lnkNEmployees" runat="server" CssClass="doc-link" OnClick="lnk_Click"></asp:LinkButton><br />
                        <asp:Label ID="lblNEmployeeAgComment" runat="server" Text="Comment"></asp:Label>
                    </div>
 
@@ -413,11 +477,11 @@
                </div>
 
                <!-- Row 5 - Salary Payment Cert -->
-               <div class="row mb-3 align-items-center alert alert-secondary">
+               <div class="row mb-3 align-items-center doc-row">
                    <label class="col-md-3 col-form-label">5. Employees Salary Payment Certificate</label>
 
                    <div class="col-md-3">
-                       <asp:LinkButton ID="lnkESPC" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                       <asp:LinkButton ID="lnkESPC" runat="server" CssClass="doc-link" OnClick="lnk_Click"></asp:LinkButton><br />
                        <asp:Label ID="lblESPCAgComment" runat="server" Text="Comment"></asp:Label>
                    </div>
 
@@ -429,13 +493,13 @@
                </div>
 
                <!-- Row 6 - SOP -->
-               <div class="row mb-3 align-items-center alert alert-secondary">
+               <div class="row mb-3 align-items-center doc-row">
                    <label class="col-md-3 col-form-label">6. SOP</label>
 
 
 
                    <div class="col-md-3">
-                       <asp:LinkButton ID="lnkSOP" runat="server" CssClass="form-label" OnClick="lnk_Click"></asp:LinkButton><br />
+                       <asp:LinkButton ID="lnkSOP" runat="server" CssClass="doc-link" OnClick="lnk_Click"></asp:LinkButton><br />
                        <asp:Label ID="lblSOPAgComment" runat="server" Text="Comment"></asp:Label>
                    </div>
 
@@ -548,4 +612,6 @@
  },250);
  }
  </script>
+ </div>
 </asp:Content>
+
