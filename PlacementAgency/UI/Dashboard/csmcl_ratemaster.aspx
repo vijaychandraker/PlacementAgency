@@ -66,7 +66,7 @@
               <span class="field-label">FY <span class="text-danger">*</span></span>
               <div class="input-group">
                 <span class="input-group-text" title="Financial Year"><i class="bi bi-calendar-range"></i></span>
-                <asp:DropDownList ID="ddlFY" runat="server" AutoPostBack="true"
+                <asp:DropDownList ID="ddlFY" runat="server"
                    CssClass="form-select"
                   aria-label="Financial Year"></asp:DropDownList>
               </div>
@@ -142,29 +142,88 @@
     <div class="card">
   <h5 class="card-header alert alert-success mb-0">Report</h5>
   <div class="card-body">
-    <asp:GridView ID="gv_ratemsater" 
+   <asp:GridView ID="gv_ratemsater"
     runat="server"
     AutoGenerateColumns="False"
     CssClass="table table-bordered table-striped"
-    HeaderStyle-BackColor="#66b2b2"
-    HeaderStyle-ForeColor="White"
-    HeaderStyle-Font-Bold="True"
-    GridLines="None"
-    Width="100%">
+    DataKeyNames="RtypeID"
+    OnRowEditing="gv_ratemsater_RowEditing"
+    OnRowUpdating="gv_ratemsater_RowUpdating"
+    OnRowCancelingEdit="gv_ratemsater_RowCancelingEdit"
+    OnRowDeleting="gv_ratemsater_RowDeleting"
+    OnRowDataBound="gv_ratemsater_RowDataBound">
 
     <Columns>
 
-        <asp:BoundField DataField="FY" HeaderText="Financial Year" />
-        <asp:BoundField DataField="CategoryName" HeaderText="Category" />
-        <asp:BoundField DataField="LocationName" HeaderText="Location" />
-        <asp:BoundField DataField="RateTypeName" HeaderText="Rate Type" />
-        <asp:BoundField DataField="Amount" HeaderText="Amount" DataFormatString="{0:N2}" />
+        <asp:BoundField DataField="FY" HeaderText="Financial Year" ReadOnly="true" />
 
       
+        <asp:TemplateField HeaderText="Category">
+            <ItemTemplate>
+                <%# Eval("CategoryName") %>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:DropDownList ID="ddlEditCategory"
+                    runat="server"
+                    CssClass="form-select"
+                    DataTextField="CategoryName"
+                    DataValueField="CategoryID">
+                </asp:DropDownList>
+            </EditItemTemplate>
+        </asp:TemplateField>
+
+       
+        <asp:TemplateField HeaderText="Location">
+            <ItemTemplate>
+                <%# Eval("LocationName") %>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:DropDownList ID="ddlEditLocation"
+                    runat="server"
+                    CssClass="form-select"
+                    DataTextField="LocationName"
+                    DataValueField="LocationID">
+                </asp:DropDownList>
+            </EditItemTemplate>
+        </asp:TemplateField>
+
+   
+        <asp:TemplateField HeaderText="Rate Type">
+            <ItemTemplate>
+                <%# Eval("RateTypeName") %>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:DropDownList ID="ddlEditRateType"
+                    runat="server"
+                    CssClass="form-select"
+                    DataTextField="RateTypeName"
+                    DataValueField="RtypeID">
+                </asp:DropDownList>
+            </EditItemTemplate>
+        </asp:TemplateField>
+
+       
+        <asp:TemplateField HeaderText="Amount">
+            <ItemTemplate>
+                <%# Eval("Amount","{0:N2}") %>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtEditAmount"
+                    runat="server"
+                    CssClass="form-control"
+                    Text='<%# Bind("Amount") %>'>
+                </asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
+
+        <asp:CommandField ShowEditButton="True" />
+        <asp:CommandField ShowDeleteButton="True" />
 
     </Columns>
 
 </asp:GridView>
+
+
       </div>
   </div>
 
