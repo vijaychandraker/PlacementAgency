@@ -187,13 +187,59 @@
         }
 
         .status-pending {
-            background: #fef3c7;
-            color: #92400e;
+            background: #fee2e2;
+            color: #b91c1c;
         }
 
         .status-na {
             background: #e5e7eb;
             color: #374151;
+        }
+
+        .gv-pager {
+            text-align: left;
+            background: #f8fbff;
+            padding-left: .55rem;
+        }
+
+        .gv-pager table {
+            margin: .35rem 0;
+            border-collapse: separate;
+            border-spacing: 6px 0;
+        }
+
+        .gv-pager td {
+            border: 0 !important;
+            padding: 0;
+        }
+
+        .gv-pager a,
+        .gv-pager span {
+            display: inline-block;
+            min-width: 34px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: .83rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid #cfe1f3;
+            background: #ffffff;
+            color: #15507d;
+            padding: 0 .45rem;
+        }
+
+        .gv-pager a:hover {
+            background: #e7f3ff;
+            border-color: #9ec6e8;
+            color: #0e3f64;
+        }
+
+        .gv-pager span {
+            background: #1f8ef1;
+            border-color: #1f8ef1;
+            color: #fff;
         }
 
         @keyframes rise {
@@ -321,37 +367,43 @@
         <section>
             <div class="card panel-card">
                 <div class="card-body">
-                    <h5 class="card-title">Payment Approval Track</h5>
-                    <p class="panel-sub">District to state approval progression overview</p>
-                    <div class="table-responsive">
-                        <table class="table table-hover approval-table align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Zone No</th>
-                                    <th>District Name</th>
-                                    <th>Final Submit (<asp:Label ID="lblmonth" runat="server"></asp:Label>)</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Zone 1</td>
-                                    <td>Raipur</td>
-                                    <td><span class="status-pill status-ok">Submitted</span></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Zone 2</td>
-                                    <td>Balodabazar-Bhatapara</td>
-                                    <td><span class="status-pill status-pending">Not Submitted</span></td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <h5 class="card-title">Payment Approval Track (<asp:Label ID="lblmonth" runat="server"></asp:Label>)</h5>
+                    <p class="panel-sub">District to state approval progression overview </p>
+                 
+
+   <asp:GridView ID="GV_approveStatus"
+    runat="server"
+    AutoGenerateColumns="False"
+    AllowPaging="True"
+    PageSize="5"
+    OnPageIndexChanging="GV_approveStatus_PageIndexChanging"
+    CssClass="table table-bordered table-striped approval-table"
+    DataKeyNames="District_ID">
+    <PagerSettings Mode="NumericFirstLast" FirstPageText="<<" LastPageText=">>" />
+    <PagerStyle CssClass="gv-pager" />
+
+    <Columns>
+        <asp:BoundField DataField="Zone_Name" HeaderText="Zone_Name" ReadOnly="true" />
+        <asp:HyperLinkField
+            HeaderText="District_Name"
+            DataTextField="District_Name"
+            DataNavigateUrlFields="District_ID,District_Name"
+            DataNavigateUrlFormatString="~/UI/Dashboard/csmcl_Filetrack.aspx?District_ID={0}&District_Name={1}" />
+        <asp:TemplateField HeaderText="Final Approve">
+            <ItemTemplate>
+                <span class='<%# Convert.ToString(Eval("ApproveByDishead")) == "5" ? "status-pill status-ok" : "status-pill status-pending" %>'>
+                    <%# Convert.ToString(Eval("ApproveByDishead")) == "5" ? "Approved" : "Pending" %>
+                </span>
+            </ItemTemplate>
+        </asp:TemplateField>
+      
+       
+    </Columns>
+
+</asp:GridView>
+
+
+
                 </div>
             </div>
         </section>
