@@ -17,5 +17,11 @@ namespace PlacementAgency
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            // Global session initialization for each new user session.
+            Session["SessionStartedAt"] = DateTime.UtcNow;
+        }
     }
 }

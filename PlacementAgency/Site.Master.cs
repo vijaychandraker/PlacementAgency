@@ -25,11 +25,9 @@ namespace PlacementAgency
 
                 lbldistrict.Text = Session["DistrictName"] != null ? Session["DistrictName"].ToString() : string.Empty;
             }
-
             if (Session["RoleID"] != null)
             {
                 string roleId = Session["RoleID"] != null ? Session["RoleID"].ToString() : string.Empty;
-
                 switch (roleId)
                 {
                     case "2": // DistrictUser
@@ -37,7 +35,7 @@ namespace PlacementAgency
                         liagencyapprove.Visible = false;
                         lidashboard.Visible = true;
                         lireport.Visible = true;
-                       
+                        lidistreport.Visible = true;
                         lipayrolentry.Visible = true;
                         break;
 
@@ -47,6 +45,7 @@ namespace PlacementAgency
                         lipayrolentry.Visible = false;
                         liapproveststus.Visible = false;
                         lireport.Visible = false;
+                        lidistreport.Visible = true;
                         li5.Visible = true;
                         li2.Visible = true;
                         liagencyapprove.Visible = false;
@@ -57,6 +56,7 @@ namespace PlacementAgency
                         lidashboard.Visible = true;
                         lipayrolentry.Visible = false;
                         lidistapprovepayroll.Visible = false;
+                        lidistreport.Visible = false;
                         lireport.Visible = false;
                         li4.Visible = true;
                         liapproveststus.Visible = false;
@@ -69,7 +69,7 @@ namespace PlacementAgency
                         li6.Visible = true;
                         li3.Visible = true;
                         li7.Visible = true;
-
+                        lidistreport.Visible = false;
                         break;
                 }
             }
@@ -86,18 +86,13 @@ namespace PlacementAgency
                 default: return "Unknown";
             }
         }
-
-
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
             Session.Abandon();
-
             FormsAuthentication.SignOut();
-
             Response.Redirect("~/Login/Login.aspx");
         }
-
         private void SetActiveMenuItem()
         {
             // Get current page filename (e.g. "csmcl_ratemaster.aspx")
@@ -142,6 +137,9 @@ namespace PlacementAgency
 
                 { "master.aspx", li7 },
                 { "adminmaster.aspx", li7 },
+
+                 { "csmcl_DistReport.aspx", lidistreport },
+                { "DistReport.aspx", lidistreport },
 
                 // report submenu pages map to the report parent
                 { "csmcl_summaryreport.aspx", li3 },

@@ -639,6 +639,7 @@
                                 </a>
                             </li>
 
+
                             <li id="liapproveststus" runat="server" class="nav-item" visible="false">
                                 <a href="<%= ResolveUrl("~/UI/Dist/csmclDistApproveStatus.aspx") %>" class="nav-link">
                                     <span class="icon-capsule"><i class="bi bi-clipboard-check"></i></span>
@@ -653,6 +654,14 @@
                                     <!-- example: enable a count by adding <span class="count-badge">3</span> -->
                                 </a>
                             </li>
+
+                            
+                             <li id="lidistreport" runat="server" class="nav-item" visible="false">
+     <a href="<%= ResolveUrl("~/UI/Dist/csmcl_DistReport.aspx") %>" class="nav-link">
+         <span class="icon-capsule"><i class="bi bi-file-earmark-bar-graph"></i></span>
+         <p>Report</p>
+     </a>
+ </li>
 
                             <li id="li1" runat="server" class="nav-item" visible="false">
                                 <a href="<%= ResolveUrl("~/UI/Dashboard/csmcl_Filetrack.aspx") %>" class="nav-link">

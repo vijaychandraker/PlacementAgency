@@ -17,6 +17,7 @@ namespace PlacementAgency.UI.Dashboard
         private readonly DatabaseHelper db = new DatabaseHelper();
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             if (!IsPostBack)
             {
                 BindrateMaster();
@@ -25,8 +26,6 @@ namespace PlacementAgency.UI.Dashboard
                 BindCategory();
                 BindRateType();
             }
-
-
         }
         public void BindrateMaster()
         {
